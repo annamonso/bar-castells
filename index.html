@@ -1,0 +1,988 @@
+<!doctype html>
+<html lang="ca">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Bar Castells · Un segle d'històries al Raval</title>
+<meta name="description" content="Cafè, tapes i bona conversa des de 1920. Bar Castells, a la Plaça del Bonsuccés, al cor del Raval de Barcelona." />
+<meta property="og:title" content="Bar Castells · Un segle d'històries al Raval" />
+<meta property="og:description" content="Cafè, tapes i bona conversa des de 1920. Plaça del Bonsuccés, Barcelona." />
+<meta property="og:image" content="images/fachada-terraza.jpg" />
+<meta property="og:type" content="website" />
+<meta name="theme-color" content="#F2EBDD" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+<style>
+/* ============ TOKENS ============ */
+:root{
+  --cream:#F2EBDD;
+  --cream-2:#ECE3D0;
+  --stone:#E5D9C0;
+  --ink:#2A2520;
+  --ink-soft:#4A4138;
+  --ink-mute:#7A6E60;
+  --wood:#5C3A21;
+  --wood-deep:#3E2614;
+  --terra:#C8542A;
+  --terra-deep:#A7401C;
+  --line:rgba(42,37,32,.18);
+  --line-soft:rgba(42,37,32,.10);
+
+  --serif:"Fraunces",ui-serif,Georgia,serif;
+  --sans:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+
+  --maxw:1320px;
+  --pad: clamp(20px, 4vw, 56px);
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+html,body{background:var(--cream);color:var(--ink)}
+body{
+  font-family:var(--sans);
+  font-size:16px;
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  overflow-x:hidden;
+  position:relative;
+}
+
+/* paper grain — very subtle */
+body::before{
+  content:"";
+  position:fixed;inset:0;
+  pointer-events:none;
+  z-index:1;
+  opacity:.55;
+  mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.16  0 0 0 0 0.13  0 0 0 0 0.10  0 0 0 0.06 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+
+img{display:block;max-width:100%;height:auto}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+
+/* ============ TYPE ============ */
+.serif{font-family:var(--serif);font-optical-sizing:auto}
+h1,h2,h3,h4{font-family:var(--serif);font-weight:500;letter-spacing:-.01em;line-height:1.05;color:var(--ink)}
+h1{font-size:clamp(48px,7.6vw,116px);font-weight:500;letter-spacing:-.025em;font-variation-settings:"opsz" 144}
+h2{font-size:clamp(36px,5.2vw,72px);font-variation-settings:"opsz" 96}
+h3{font-size:clamp(22px,2.4vw,32px);font-variation-settings:"opsz" 36}
+.eyebrow{
+  font-family:var(--sans);
+  font-size:11px;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--terra-deep);font-weight:500;
+}
+.body-lg{font-size:clamp(17px,1.4vw,20px);line-height:1.6;color:var(--ink-soft)}
+.drop::first-letter{
+  font-family:var(--serif);
+  float:left;
+  font-size:5.4em;
+  line-height:.85;
+  padding:.08em .14em 0 0;
+  font-weight:500;
+  color:var(--terra-deep);
+  font-variation-settings:"opsz" 144;
+}
+
+/* big section numerals */
+.numeral{
+  font-family:var(--serif);
+  font-style:italic;
+  font-weight:400;
+  font-size:clamp(64px,9vw,140px);
+  color:var(--terra);
+  line-height:.8;
+  font-variation-settings:"opsz" 144;
+  display:block;
+}
+
+/* ============ LAYOUT ============ */
+.wrap{max-width:var(--maxw);margin:0 auto;padding-left:var(--pad);padding-right:var(--pad);position:relative;z-index:2}
+section{position:relative;z-index:2}
+.divider{height:1px;background:var(--line);margin:0 var(--pad)}
+
+/* ============ NAV ============ */
+.nav{
+  position:sticky;top:0;z-index:50;
+  background:rgba(242,235,221,.86);
+  backdrop-filter:saturate(140%) blur(10px);
+  -webkit-backdrop-filter:saturate(140%) blur(10px);
+  border-bottom:1px solid var(--line-soft);
+}
+.nav-inner{
+  display:flex;align-items:center;justify-content:space-between;
+  height:72px;
+}
+.logo-img{height:38px;width:auto;display:block}
+.foot-logo{height:72px;width:auto;display:block;filter:brightness(1.05) saturate(1.1)}
+.foot-est{display:block;margin-top:8px;font-family:var(--serif);font-style:italic;font-size:13px;color:var(--terra);letter-spacing:.04em}
+@media (max-width:840px){.logo-img{height:32px}.foot-logo{height:56px;margin:0 auto}.foot-est{text-align:center}}
+.logo{display:flex;align-items:center;gap:12px}
+.logo .est{
+  font-family:var(--sans);
+  font-size:9px;letter-spacing:.28em;text-transform:uppercase;
+  color:var(--ink-mute);font-weight:500;
+  border-left:1px solid var(--line);
+  padding-left:10px;
+  align-self:center;
+}
+.nav-links{display:flex;align-items:center;gap:32px}
+.nav-links a{
+  font-size:13.5px;font-weight:500;
+  color:var(--ink-soft);
+  position:relative;padding:6px 0;
+}
+.nav-links a:hover{color:var(--terra-deep)}
+.nav-links a::after{
+  content:"";position:absolute;left:0;right:100%;bottom:0;
+  height:1px;background:var(--terra);transition:right .35s ease;
+}
+.nav-links a:hover::after{right:0}
+
+.lang{
+  display:flex;gap:0;border:1px solid var(--line);
+  border-radius:999px;padding:3px;
+  font-size:11px;font-weight:600;letter-spacing:.06em;
+}
+.lang button{
+  padding:5px 11px;border-radius:999px;color:var(--ink-mute);
+  transition:all .25s;
+}
+.lang button.active{background:var(--ink);color:var(--cream)}
+.menu-btn{display:none}
+
+@media (max-width:840px){
+  .nav-links{display:none;position:absolute;top:72px;left:0;right:0;
+    flex-direction:column;gap:0;background:var(--cream);
+    border-bottom:1px solid var(--line);padding:8px 0;}
+  .nav-links.open{display:flex}
+  .nav-links a{padding:14px var(--pad);width:100%;border-top:1px solid var(--line-soft)}
+  .menu-btn{display:flex;flex-direction:column;gap:4px;padding:8px}
+  .menu-btn span{width:20px;height:1.5px;background:var(--ink)}
+}
+
+/* ============ HERO ============ */
+.hero{padding:clamp(28px,5vw,72px) 0 clamp(40px,6vw,96px)}
+.hero-grid{
+  display:grid;
+  grid-template-columns: 1.05fr 1fr;
+  gap:clamp(28px,4.5vw,72px);
+  align-items:end;
+}
+.hero-text{padding-bottom:8px}
+.hero-meta{
+  display:flex;align-items:center;gap:14px;margin-bottom:28px;
+  font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-mute);font-weight:500;
+}
+.hero-meta .dot{width:5px;height:5px;border-radius:50%;background:var(--terra)}
+.hero-text h1{margin-bottom:24px}
+.hero-text h1 em{
+  font-style:italic;font-weight:400;color:var(--terra-deep);
+  font-variation-settings:"opsz" 144;
+}
+.hero-tag{
+  font-family:var(--serif);font-style:italic;font-weight:400;
+  font-size:clamp(18px,1.7vw,24px);
+  color:var(--ink-soft);max-width:42ch;margin-bottom:40px;line-height:1.4;
+}
+.hero-info{
+  display:grid;grid-template-columns:1fr 1fr;gap:20px 32px;
+  padding-top:24px;border-top:1px solid var(--line);
+  max-width:520px;
+}
+.hero-info dt{
+  font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--ink-mute);margin-bottom:6px;font-weight:500;
+}
+.hero-info dd{font-size:14.5px;color:var(--ink);line-height:1.5}
+.hero-info dd strong{font-weight:500}
+
+.hero-image{
+  position:relative;
+  aspect-ratio: 4/5;
+  background:var(--stone);
+  overflow:hidden;
+}
+.hero-image img{width:100%;height:100%;object-fit:cover}
+.hero-image::after{
+  content:"Est. 1920";
+  position:absolute;left:-12px;bottom:24px;
+  background:var(--terra);color:var(--cream);
+  padding:8px 18px;
+  font-family:var(--serif);font-style:italic;font-size:18px;
+  letter-spacing:.02em;
+  font-variation-settings:"opsz" 24;
+}
+
+@media (max-width:840px){
+  .hero-grid{grid-template-columns:1fr;gap:36px}
+  .hero-image{aspect-ratio:4/5;order:-1}
+  .hero-info{grid-template-columns:1fr 1fr;max-width:none}
+}
+
+/* ============ MARQUEE ============ */
+.marquee{
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  overflow:hidden;
+  background:var(--cream-2);
+}
+.marquee-track{
+  display:flex;gap:60px;
+  padding:18px 0;
+  animation: scroll 42s linear infinite;
+  width:max-content;
+  font-family:var(--serif);font-style:italic;font-size:22px;font-weight:400;
+  color:var(--ink-soft);
+  white-space:nowrap;
+}
+.marquee-track span{display:inline-flex;align-items:center;gap:60px}
+.marquee-track .sep{color:var(--terra);font-style:normal}
+@keyframes scroll{
+  to{transform:translateX(-50%)}
+}
+
+/* ============ SECTION HEADER ============ */
+.section-head{
+  display:grid;grid-template-columns: auto 1fr;
+  gap:clamp(20px,3vw,48px);
+  align-items:start;
+  padding:clamp(60px,8vw,120px) 0 clamp(36px,4vw,56px);
+}
+.section-head .lead{max-width:54ch}
+.section-head .lead p{margin-top:18px;color:var(--ink-soft);font-size:clamp(15px,1.2vw,17px)}
+
+/* ============ HISTORIA ============ */
+.historia{padding-bottom:clamp(60px,8vw,120px)}
+.historia-grid{
+  display:grid;grid-template-columns: 1fr 1fr;
+  gap:clamp(32px,5vw,80px);
+  align-items:start;
+}
+.historia-text p{margin-bottom:1.1em;color:var(--ink-soft);font-size:17px;line-height:1.7}
+.historia-text p:first-child{font-size:19px;color:var(--ink)}
+.historia-figure{position:relative}
+.historia-figure img{width:100%;aspect-ratio: 4/5;object-fit:cover;background:var(--stone)}
+.historia-figure figcaption{
+  font-family:var(--serif);font-style:italic;font-size:14px;
+  color:var(--ink-mute);margin-top:14px;max-width:36ch;
+}
+.pull{
+  margin:48px 0 0;
+  padding:28px 0 0;
+  border-top:1px solid var(--line);
+  font-family:var(--serif);font-style:italic;font-weight:400;
+  font-size:clamp(22px,2.4vw,30px);line-height:1.3;color:var(--ink);
+  font-variation-settings:"opsz" 48;
+}
+.pull::before{content:"“";color:var(--terra);font-size:1.4em;line-height:0;vertical-align:-.25em;margin-right:.1em}
+.pull::after{content:"”";color:var(--terra);font-size:1.4em;line-height:0;vertical-align:-.25em;margin-left:.05em}
+
+@media (max-width:840px){
+  .historia-grid{grid-template-columns:1fr}
+  .section-head{grid-template-columns:1fr}
+}
+
+/* ============ AMBIENT (asymmetric grid) ============ */
+.ambient{
+  background:var(--cream-2);
+  padding-bottom:clamp(60px,8vw,120px);
+  border-top:1px solid var(--line-soft);
+  border-bottom:1px solid var(--line-soft);
+}
+.ambient-grid{
+  display:grid;
+  grid-template-columns: repeat(12,1fr);
+  grid-auto-rows: 90px;
+  gap:14px;
+}
+.ambient-grid figure{
+  margin:0;overflow:hidden;background:var(--stone);
+  position:relative;
+}
+.ambient-grid img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s ease}
+.ambient-grid figure:hover img{transform:scale(1.04)}
+.a-1{grid-column: 1 / span 7; grid-row: span 6;}
+.a-2{grid-column: 8 / span 5; grid-row: span 4;}
+.a-3{grid-column: 8 / span 5; grid-row: span 4;}
+.a-4{grid-column: 1 / span 5; grid-row: span 5;}
+.a-5{grid-column: 6 / span 7; grid-row: span 5;}
+.cap{
+  position:absolute;left:14px;bottom:12px;
+  background:var(--cream);color:var(--ink);
+  font-family:var(--serif);font-style:italic;font-size:13px;
+  padding:4px 10px;
+}
+
+@media (max-width:840px){
+  .ambient-grid{grid-template-columns:repeat(6,1fr);grid-auto-rows:60px;gap:10px}
+  .a-1{grid-column:1/-1;grid-row:span 5}
+  .a-2{grid-column:1/span 3;grid-row:span 4}
+  .a-3{grid-column:4/span 3;grid-row:span 4}
+  .a-4{grid-column:1/span 3;grid-row:span 4}
+  .a-5{grid-column:4/span 3;grid-row:span 4}
+}
+
+/* ============ TROBAR ============ */
+.trobar{padding-bottom:clamp(60px,8vw,120px)}
+.trobar-grid{
+  display:grid;grid-template-columns: 1fr 1.2fr;
+  gap:clamp(28px,4vw,64px);
+  align-items:stretch;
+}
+.info-card{display:flex;flex-direction:column;gap:32px}
+.info-row{
+  display:grid;grid-template-columns: 110px 1fr;
+  gap:24px;align-items:start;
+  padding-bottom:22px;border-bottom:1px solid var(--line);
+}
+.info-row:last-child{border-bottom:0}
+.info-row dt{
+  font-size:11px;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--ink-mute);font-weight:500;padding-top:4px;
+}
+.info-row dd{font-size:15.5px;color:var(--ink);line-height:1.55}
+.info-row dd .small{font-size:13.5px;color:var(--ink-mute);display:block;margin-top:4px}
+.cash{
+  display:inline-flex;align-items:center;gap:10px;
+  margin-top:8px;padding:7px 14px;
+  background:var(--terra);color:var(--cream);
+  font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;font-weight:500;
+}
+.map-frame{
+  width:100%;min-height:480px;height:100%;
+  border:0;
+  background:var(--stone);
+  filter:saturate(.8) contrast(.95);
+}
+@media (max-width:840px){
+  .trobar-grid{grid-template-columns:1fr}
+  .map-frame{min-height:340px}
+}
+
+/* ============ FOOTER ============ */
+footer{
+  background:var(--wood-deep);
+  color:var(--cream);
+  padding:64px 0 40px;
+  position:relative;z-index:2;
+}
+.foot-grid{
+  display:grid;grid-template-columns: 1fr auto 1fr;
+  gap:32px;align-items:center;
+}
+.foot-grid .left{font-family:var(--serif);font-size:24px;font-weight:500;font-variation-settings:"opsz" 36}
+.foot-grid .left span{color:var(--terra);font-style:italic;font-weight:400}
+.foot-grid .center{
+  display:flex;gap:18px;justify-content:center;
+}
+.foot-grid .center a{
+  font-size:13px;color:rgba(242,235,221,.75);
+  border-bottom:1px solid transparent;padding-bottom:2px;
+}
+.foot-grid .center a:hover{color:var(--terra);border-color:var(--terra)}
+.foot-grid .right{
+  text-align:right;font-size:12px;color:rgba(242,235,221,.55);
+  font-family:var(--serif);font-style:italic;
+}
+.foot-bottom{
+  margin-top:56px;padding-top:24px;
+  border-top:1px solid rgba(242,235,221,.12);
+  display:flex;justify-content:space-between;font-size:11.5px;color:rgba(242,235,221,.5);
+  letter-spacing:.04em;
+}
+@media (max-width:840px){
+  .foot-grid{grid-template-columns:1fr;text-align:center}
+  .foot-grid .right{text-align:center}
+  .foot-bottom{flex-direction:column;gap:8px;text-align:center}
+}
+
+/* ============ TWEAKS PANEL ============ */
+.tw-panel{
+  position:fixed;right:24px;bottom:24px;z-index:200;
+  width:300px;
+  background:var(--cream);
+  border:1px solid var(--line);
+  box-shadow:0 24px 60px rgba(42,37,32,.18), 0 4px 12px rgba(42,37,32,.08);
+  font-family:var(--sans);
+  color:var(--ink);
+  display:none;
+  border-radius:2px;
+  overflow:hidden;
+}
+.tw-panel.open{display:block}
+.tw-head{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:12px 14px;
+  border-bottom:1px solid var(--line);
+  background:var(--cream-2);
+  cursor:grab;
+}
+.tw-head h4{
+  font-family:var(--serif);font-style:italic;font-weight:500;
+  font-size:16px;font-variation-settings:"opsz" 18;
+}
+.tw-head button{
+  width:24px;height:24px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:18px;line-height:1;color:var(--ink-mute);
+}
+.tw-head button:hover{background:var(--stone);color:var(--ink)}
+.tw-body{padding:14px;max-height:60vh;overflow-y:auto}
+.tw-section{margin-bottom:18px}
+.tw-section:last-child{margin-bottom:0}
+.tw-section-title{
+  font-size:10px;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--terra-deep);font-weight:600;
+  margin-bottom:10px;padding-bottom:6px;
+  border-bottom:1px solid var(--line-soft);
+}
+.tw-row{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:10px;margin-bottom:9px;font-size:12.5px;color:var(--ink-soft);
+}
+.tw-row:last-child{margin-bottom:0}
+.tw-row label{flex:1;cursor:pointer}
+.tw-toggle{
+  position:relative;width:34px;height:18px;
+  background:var(--stone);border-radius:999px;
+  transition:background .2s;flex-shrink:0;
+}
+.tw-toggle::after{
+  content:"";position:absolute;top:2px;left:2px;
+  width:14px;height:14px;background:#fff;border-radius:50%;
+  transition:transform .2s;box-shadow:0 1px 2px rgba(0,0,0,.2);
+}
+.tw-toggle.on{background:var(--terra)}
+.tw-toggle.on::after{transform:translateX(16px)}
+.tw-slider{
+  -webkit-appearance:none;appearance:none;
+  width:120px;height:3px;background:var(--stone);
+  border-radius:2px;outline:none;
+}
+.tw-slider::-webkit-slider-thumb{
+  -webkit-appearance:none;appearance:none;
+  width:14px;height:14px;border-radius:50%;
+  background:var(--terra);cursor:pointer;border:2px solid var(--cream);
+  box-shadow:0 1px 3px rgba(0,0,0,.15);
+}
+.tw-slider::-moz-range-thumb{
+  width:14px;height:14px;border-radius:50%;
+  background:var(--terra);cursor:pointer;border:2px solid var(--cream);
+}
+.tw-swatches{display:flex;gap:6px}
+.tw-swatch{
+  width:22px;height:22px;border-radius:50%;cursor:pointer;
+  border:2px solid var(--cream);box-shadow:0 0 0 1px var(--line);
+  transition:transform .15s;
+}
+.tw-swatch:hover{transform:scale(1.1)}
+.tw-swatch.active{box-shadow:0 0 0 2px var(--ink)}
+.tw-fab{
+  position:fixed;right:24px;bottom:24px;z-index:199;
+  width:48px;height:48px;border-radius:50%;
+  background:var(--ink);color:var(--cream);
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 8px 20px rgba(42,37,32,.25);
+  cursor:pointer;border:0;
+  font-family:var(--serif);font-style:italic;font-size:18px;
+  font-variation-settings:"opsz" 24;
+  transition:transform .2s, background .2s;
+}
+.tw-fab:hover{background:var(--terra);transform:scale(1.05)}
+.tw-fab.hidden{display:none}
+
+@media (max-width:840px){
+  .tw-panel{right:12px;left:12px;bottom:80px;width:auto}
+  .tw-fab{right:16px;bottom:16px}
+}
+
+/* ============ IMG PLACEHOLDER ============ */
+/* visible when image fails to load */
+img[data-ph]{
+  position:relative;
+}
+.ph-img{
+  width:100%;height:100%;
+  background:
+    repeating-linear-gradient(135deg, rgba(92,58,33,.08) 0 14px, rgba(92,58,33,.04) 14px 28px),
+    var(--stone);
+  display:flex;align-items:center;justify-content:center;
+  font-family: ui-monospace,Menlo,monospace;font-size:11px;
+  color:var(--wood);letter-spacing:.06em;text-align:center;padding:14px;
+}
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<header class="nav" data-screen-label="Nav">
+  <div class="wrap nav-inner">
+    <a href="#" class="logo" aria-label="Bar Castells">
+      <img src="images/logo.png" alt="Bar Castells" class="logo-img"/>
+      <span class="est">Raval · 1920</span>
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="#historia" data-i18n="nav.history">Història</a>
+      <a href="#trobar" data-i18n="nav.find">Trobar-nos</a>
+    </nav>
+    <div style="display:flex;gap:14px;align-items:center">
+      <div class="lang" role="tablist" aria-label="Language">
+        <button data-lang="ca" class="active">CA</button>
+        <button data-lang="es">ES</button>
+        <button data-lang="en">EN</button>
+      </div>
+      <button class="menu-btn" aria-label="Menu" id="menuBtn"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero" data-screen-label="01 Hero">
+  <div class="wrap hero-grid">
+    <div class="hero-text">
+      <div class="hero-meta">
+        <span data-i18n="hero.kicker">Plaça del Bonsuccés · El Raval</span>
+        <span class="dot" aria-hidden="true"></span>
+        <span data-i18n="hero.kicker2">Cent anys oberts</span>
+      </div>
+      <h1>
+        <span data-i18n="hero.h1a">Un segle</span><br/>
+        <em data-i18n="hero.h1b">d'històries</em><br/>
+        <span data-i18n="hero.h1c">al Raval.</span>
+      </h1>
+      <p class="hero-tag" data-i18n="hero.tag">
+        Cafè, tapes i bona conversa des de 1920. Una barra de fusta
+        tallada a mà, una paret de ràdios velles i una plaça plena de sol.
+      </p>
+      <dl class="hero-info">
+        <div>
+          <dt data-i18n="hero.where">On som</dt>
+          <dd><strong>Plaça del Bonsuccés, 1</strong><br/>08001 Barcelona</dd>
+        </div>
+        <div>
+          <dt data-i18n="hero.when">Avui obert</dt>
+          <dd><strong>8.00 — 01.00 h</strong><br/><span data-i18n="hero.whenNote">Diumenge tancat</span></dd>
+        </div>
+      </dl>
+    </div>
+    <div class="hero-image">
+      <img src="images/fachada-terraza.jpg" alt="Façana del Bar Castells amb el para-sol vermell a la plaça" loading="eager" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+      <div class="ph-img" style="display:none;position:absolute;inset:0">images/fachada-terraza.jpg<br/>façana amb para-sol</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MARQUEE ============ -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>Truita de patates <span class="sep">·</span> Vermut Castells <span class="sep">·</span> Cafè sol <span class="sep">·</span> Pa amb tomàquet <span class="sep">·</span> Bombes del Raval <span class="sep">·</span> Esmorzars de forquilla <span class="sep">·</span> Plats del dia <span class="sep">·</span> Tertúlia de barri <span class="sep">·</span></span>
+    <span>Truita de patates <span class="sep">·</span> Vermut Castells <span class="sep">·</span> Cafè sol <span class="sep">·</span> Pa amb tomàquet <span class="sep">·</span> Bombes del Raval <span class="sep">·</span> Esmorzars de forquilla <span class="sep">·</span> Plats del dia <span class="sep">·</span> Tertúlia de barri <span class="sep">·</span></span>
+  </div>
+</div>
+
+<!-- ============ HISTÒRIA ============ -->
+<section class="historia" id="historia" data-screen-label="02 Historia">
+  <div class="wrap">
+    <header class="section-head">
+      <span class="numeral">01</span>
+      <div class="lead">
+        <span class="eyebrow" data-i18n="hist.eyebrow">Història</span>
+        <h2 data-i18n="hist.h2">Cent anys de gent que entra i surt.</h2>
+        <p data-i18n="hist.lead">Un negoci familiar que ha vist passar guerres, balls, eleccions i molts dilluns. La barra continua sent la mateixa.</p>
+      </div>
+    </header>
+
+    <div class="historia-grid">
+      <div class="historia-text">
+        <p class="drop" data-i18n="hist.p1">El Bar Castells va obrir la persiana per primera vegada el 1920, en una cantonada de la plaça del Bonsuccés que aleshores feia olor de barri i de port. Des de llavors, quatre generacions han servit cafès al matí, vermuts al migdia i últimes copes a la nit.</p>
+        <p data-i18n="hist.p2">El moble principal, una barra de fusta tallada a mà, amb columnes salomòniques i miralls picats, es va restaurar el 1980 i es va deixar tal com estava: més caràcter que polidesa. A la part del fons, una col·lecció de ràdios dels anys quaranta i cinquanta segueix encesa i, de tant en tant, sintonitzada.</p>
+        <p data-i18n="hist.p3">Aquí no hi ha música ambiental ni carta digital. Hi ha veus, plats, premsa del dia i la mateixa truita de patates de fa dècades.</p>
+        <blockquote class="pull" data-i18n="hist.pull">Hem canviat la cuina tres vegades. La barra, mai.</blockquote>
+      </div>
+      <figure class="historia-figure">
+        <img src="images/barra-tallada.jpg" alt="Barra de fusta tallada amb ampolles i miralls" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'ph-img',style:'aspect-ratio:4/5',innerHTML:'images/barra-tallada.jpg<br>barra tallada a mà'}))"/>
+        <figcaption data-i18n="hist.cap">La barra original, restaurada el 1980. La cara on s'hi recolzen els colzes és, sobretot, l'arxiu del barri.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ AMBIENT ============ -->
+<section class="ambient" data-screen-label="03 Ambient">
+  <div class="wrap">
+    <header class="section-head">
+      <span class="numeral">02</span>
+      <div class="lead">
+        <span class="eyebrow" data-i18n="amb.eyebrow">L'Ambient</span>
+        <h2 data-i18n="amb.h2">Maó vist, fusta i una paret <em style="font-style:italic">que canta</em>.</h2>
+        <p data-i18n="amb.lead">Quaranta-tres ràdios, una cafetera que no calla i taules de marbre per a tertúlies llargues.</p>
+      </div>
+    </header>
+
+    <div class="ambient-grid">
+      <figure class="a-1">
+        <img src="images/radios-pared.jpg" alt="Paret de ràdios antigues amb llum càlida" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'ph-img',style:'width:100%;height:100%',innerHTML:'images/radios-pared.jpg<br>paret de ràdios'}))"/>
+        <figcaption class="cap" data-i18n="amb.cap1">La paret de les ràdios</figcaption>
+      </figure>
+      <figure class="a-2">
+        <img src="images/cafetera.jpg" alt="Cafetera espresso d'acer" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'ph-img',style:'width:100%;height:100%',innerHTML:'images/cafetera.jpg<br>cafetera'}))"/>
+      </figure>
+      <figure class="a-3">
+        <img src="images/comedor-ladrillo.jpg" alt="Menjador amb parets de maó" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'ph-img',style:'width:100%;height:100%',innerHTML:'images/comedor-ladrillo.jpg<br>menjador de maó'}))"/>
+        <figcaption class="cap" data-i18n="amb.cap2">El menjador del fons</figcaption>
+      </figure>
+      <figure class="a-4">
+        <img src="images/radios-detalle.jpg" alt="Detall d'una ràdio antiga" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'ph-img',style:'width:100%;height:100%',innerHTML:'images/radios-detalle.jpg<br>detall ràdio'}))"/>
+      </figure>
+      <figure class="a-5">
+        <img src="images/comedor-amplio.jpg" alt="Sala àmplia amb taules de marbre" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'ph-img',style:'width:100%;height:100%',innerHTML:'images/comedor-amplio.jpg<br>sala marbre'}))"/>
+        <figcaption class="cap" data-i18n="amb.cap3">Taules de marbre, premsa del dia</figcaption>
+      </figure>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ TROBAR-NOS ============ -->
+<section class="trobar" id="trobar" data-screen-label="04 Trobar-nos">
+  <div class="wrap">
+    <header class="section-head">
+      <span class="numeral">03</span>
+      <div class="lead">
+        <span class="eyebrow" data-i18n="tro.eyebrow">Trobar-nos</span>
+        <h2 data-i18n="tro.h2">A la cantonada de sempre.</h2>
+        <p data-i18n="tro.lead">Plaça del Bonsuccés, al Raval. Tres minuts caminant des de Plaça Catalunya.</p>
+      </div>
+    </header>
+
+    <div class="trobar-grid">
+      <dl class="info-card">
+        <div class="info-row">
+          <dt data-i18n="tro.addr">Adreça</dt>
+          <dd>
+            <strong>Plaça del Bonsuccés, 1</strong><br/>
+            08001 Barcelona<br/>
+            <span class="small" data-i18n="tro.addrNote">El Raval · Ciutat Vella</span>
+          </dd>
+        </div>
+        <div class="info-row">
+          <dt data-i18n="tro.tel">Telèfon</dt>
+          <dd><a href="tel:+34933021054"><strong>93 302 10 54</strong></a></dd>
+        </div>
+        <div class="info-row">
+          <dt data-i18n="tro.hours">Horari</dt>
+          <dd>
+            <strong data-i18n="tro.h1">Dilluns a dijous</strong> · 8.00 — 01.00 h<br/>
+            <strong data-i18n="tro.h2t">Divendres i dissabte</strong> · 8.00 — 02.30 h<br/>
+            <strong data-i18n="tro.h3">Diumenge</strong> · <span data-i18n="tro.closed">tancat</span>
+          </dd>
+        </div>
+        <div class="info-row">
+          <dt data-i18n="tro.transit">Com arribar</dt>
+          <dd>
+            <strong data-i18n="tro.metro">Metro</strong> L3 Pl. Catalunya<br/>
+            <strong data-i18n="tro.bus">Bus</strong> 14 · 59 · 38 · 91
+          </dd>
+        </div>
+      </dl>
+      <div>
+        <iframe
+          class="map-frame"
+          title="Mapa Bar Castells"
+          src="https://www.google.com/maps?q=Pla%C3%A7a+del+Bonsucc%C3%A9s+1,+Barcelona&output=embed"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer data-screen-label="07 Footer">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="left"><img src="images/logo.png" alt="Bar Castells" class="foot-logo"/><span class="foot-est">est. 1920</span></div>
+      <div class="center">
+        <a href="https://instagram.com/bar.castells" target="_blank" rel="noopener">Instagram @bar.castells</a>
+        <a href="tel:+34933021054" data-i18n="foot.call">Truca'ns</a>
+      </div>
+      <div class="right" data-i18n="foot.craft">Fet amb cura a Barcelona</div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Bar Castells · Plaça del Bonsuccés, 1 · 08001 Barcelona</span>
+      <span data-i18n="foot.legal">Avís legal · Política de privacitat</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ TWEAKS PANEL ============ -->
+<button class="tw-fab" id="twFab" aria-label="Tweaks">✦</button>
+<aside class="tw-panel" id="twPanel" role="dialog" aria-label="Tweaks">
+  <header class="tw-head">
+    <h4>Tweaks</h4>
+    <button id="twClose" aria-label="Tancar">×</button>
+  </header>
+  <div class="tw-body">
+    <div class="tw-section">
+      <div class="tw-section-title">Seccions</div>
+      <div class="tw-row">
+        <label for="tw-marquee">Marquesina superior</label>
+        <button class="tw-toggle" id="tw-marquee" data-key="showMarquee" role="switch"></button>
+      </div>
+    </div>
+
+    <div class="tw-section">
+      <div class="tw-section-title">Atmosfera</div>
+      <div class="tw-row">
+        <label>Accent</label>
+        <div class="tw-swatches" id="tw-accent">
+          <button class="tw-swatch" data-accent="#C8542A" style="background:#C8542A" aria-label="Terracota"></button>
+          <button class="tw-swatch" data-accent="#8C6A3F" style="background:#8C6A3F" aria-label="Mostassa"></button>
+          <button class="tw-swatch" data-accent="#6B4226" style="background:#6B4226" aria-label="Fusta"></button>
+          <button class="tw-swatch" data-accent="#4A6741" style="background:#4A6741" aria-label="Oliva"></button>
+        </div>
+      </div>
+      <div class="tw-row">
+        <label for="tw-grain">Gra del paper</label>
+        <input type="range" class="tw-slider" id="tw-grain" min="0" max="100" step="5" data-key="grain"/>
+      </div>
+      <div class="tw-row">
+        <label for="tw-warmth">Calidesa del fons</label>
+        <input type="range" class="tw-slider" id="tw-warmth" min="0" max="100" step="5" data-key="warmth"/>
+      </div>
+    </div>
+
+    <div class="tw-section">
+      <div class="tw-section-title">Tipografia</div>
+      <div class="tw-row">
+        <label for="tw-scale">Escala dels titulars</label>
+        <input type="range" class="tw-slider" id="tw-scale" min="80" max="130" step="5" data-key="scale"/>
+      </div>
+      <div class="tw-row">
+        <label for="tw-italic">Titulars en cursiva</label>
+        <button class="tw-toggle" id="tw-italic" data-key="italicH1" role="switch"></button>
+      </div>
+    </div>
+  </div>
+</aside>
+
+<script>
+const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+  "showMarquee": true,
+  "accent": "#C8542A",
+  "grain": 35,
+  "warmth": 35,
+  "scale": 105,
+  "italicH1": true
+}/*EDITMODE-END*/;
+
+let TW = {...TWEAK_DEFAULTS};
+
+function applyTweaks(){
+  // Marquee
+  const marquee = document.querySelector(".marquee");
+  if(marquee) marquee.style.display = TW.showMarquee ? "" : "none";
+
+  // Accent
+  const r = document.documentElement.style;
+  r.setProperty("--terra", TW.accent);
+  // derive a darker variant
+  r.setProperty("--terra-deep", shade(TW.accent, -20));
+
+  // Grain
+  document.body.style.setProperty("--grain-op", (TW.grain/100).toFixed(2));
+  const grainStyle = document.getElementById("grainStyle") || (()=>{
+    const s = document.createElement("style"); s.id="grainStyle"; document.head.appendChild(s); return s;
+  })();
+  grainStyle.textContent = `body::before{opacity:${(TW.grain/100*0.85).toFixed(2)} !important}`;
+
+  // Warmth — interpolate cream
+  const w = TW.warmth/100;
+  // cool 0: #EEE9E0, warm 1: #F2E6CC
+  const cream = mix("#EEE9E0", "#F4E4C4", w);
+  const cream2 = mix("#E8E1D0", "#EDDDB6", w);
+  r.setProperty("--cream", cream);
+  r.setProperty("--cream-2", cream2);
+  document.querySelector('meta[name="theme-color"]').setAttribute("content", cream);
+
+  // Scale
+  document.documentElement.style.fontSize = (TW.scale)+"%";
+  // we don't want body text to inflate too — only headings
+  document.body.style.fontSize = "16px";
+  // re-target headings
+  let scaleStyle = document.getElementById("scaleStyle");
+  if(!scaleStyle){
+    scaleStyle = document.createElement("style"); scaleStyle.id="scaleStyle"; document.head.appendChild(scaleStyle);
+  }
+  const k = TW.scale/100;
+  scaleStyle.textContent = `
+    h1{font-size:calc(clamp(48px,7.6vw,116px) * ${k})}
+    h2{font-size:calc(clamp(36px,5.2vw,72px) * ${k})}
+    .numeral{font-size:calc(clamp(64px,9vw,140px) * ${k})}
+    h1${TW.italicH1?'':' em'}{font-style:${TW.italicH1?'italic':'normal'}}
+  `;
+
+  // sync controls UI
+  document.querySelectorAll(".tw-toggle").forEach(t=>{
+    const k = t.dataset.key;
+    t.classList.toggle("on", !!TW[k]);
+    t.setAttribute("aria-checked", !!TW[k]);
+  });
+  document.querySelectorAll(".tw-slider").forEach(s=>{
+    const k = s.dataset.key;
+    s.value = TW[k];
+  });
+  document.querySelectorAll("#tw-accent .tw-swatch").forEach(b=>{
+    b.classList.toggle("active", b.dataset.accent === TW.accent);
+  });
+}
+
+// helpers
+function hexToRgb(h){h=h.replace('#','');return [parseInt(h.slice(0,2),16),parseInt(h.slice(2,4),16),parseInt(h.slice(4,6),16)]}
+function rgbToHex(r,g,b){return "#"+[r,g,b].map(v=>Math.max(0,Math.min(255,Math.round(v))).toString(16).padStart(2,"0")).join("")}
+function mix(a,b,t){const A=hexToRgb(a),B=hexToRgb(b);return rgbToHex(A[0]+(B[0]-A[0])*t,A[1]+(B[1]-A[1])*t,A[2]+(B[2]-A[2])*t)}
+function shade(h,p){const [r,g,b]=hexToRgb(h);const f=(p<0?0:255),t=Math.abs(p)/100;return rgbToHex(r+(f-r)*t,g+(f-g)*t,b+(f-b)*t)}
+
+function setTweak(k,v){
+  TW[k]=v;
+  applyTweaks();
+  try{
+    window.parent.postMessage({type:'__edit_mode_set_keys',edits:{[k]:v}},'*');
+  }catch(e){}
+}
+
+// wire controls
+document.querySelectorAll(".tw-toggle").forEach(t=>{
+  t.addEventListener("click",()=>setTweak(t.dataset.key, !TW[t.dataset.key]));
+});
+document.querySelectorAll(".tw-slider").forEach(s=>{
+  s.addEventListener("input",()=>setTweak(s.dataset.key, +s.value));
+});
+document.querySelectorAll("#tw-accent .tw-swatch").forEach(b=>{
+  b.addEventListener("click",()=>setTweak("accent", b.dataset.accent));
+});
+
+// panel open/close + host protocol
+const twPanel = document.getElementById("twPanel");
+const twFab = document.getElementById("twFab");
+function openPanel(){twPanel.classList.add("open");twFab.classList.add("hidden")}
+function closePanel(){
+  twPanel.classList.remove("open");twFab.classList.remove("hidden");
+  try{window.parent.postMessage({type:'__edit_mode_dismissed'},'*')}catch(e){}
+}
+twFab.addEventListener("click",openPanel);
+document.getElementById("twClose").addEventListener("click",closePanel);
+
+// Host protocol — register listener BEFORE announcing
+window.addEventListener("message",e=>{
+  const d = e.data || {};
+  if(d.type === "__activate_edit_mode") openPanel();
+  if(d.type === "__deactivate_edit_mode") closePanel();
+});
+try{window.parent.postMessage({type:"__edit_mode_available"},"*")}catch(e){}
+
+applyTweaks();
+</script>
+
+<script>
+const I18N = {
+  ca: {
+    "nav.history":"Història","nav.find":"Trobar-nos",
+    "hero.kicker":"Plaça del Bonsuccés · El Raval","hero.kicker2":"Cent anys oberts",
+    "hero.h1a":"Un segle","hero.h1b":"d'històries","hero.h1c":"al Raval.",
+    "hero.tag":"Cafè, tapes i bona conversa des de 1920. Una barra de fusta tallada a mà, una paret de ràdios velles i una plaça plena de sol.",
+    "hero.where":"On som","hero.when":"Avui obert","hero.whenNote":"Diumenge tancat",
+    "hist.eyebrow":"Història","hist.h2":"Cent anys de gent que entra i surt.",
+    "hist.lead":"Un negoci familiar que ha vist passar guerres, balls, eleccions i molts dilluns. La barra continua sent la mateixa.",
+    "hist.p1":"El Bar Castells va obrir la persiana per primera vegada el 1920, en una cantonada de la plaça del Bonsuccés que aleshores feia olor de barri i de port. Des de llavors, quatre generacions han servit cafès al matí, vermuts al migdia i últimes copes a la nit.",
+    "hist.p2":"El moble principal, una barra de fusta tallada a mà, amb columnes salomòniques i miralls picats, es va restaurar el 1980 i es va deixar tal com estava: més caràcter que polidesa. A la part del fons, una col·lecció de ràdios dels anys quaranta i cinquanta segueix encesa i, de tant en tant, sintonitzada.",
+    "hist.p3":"Aquí no hi ha música ambiental ni carta digital. Hi ha veus, plats, premsa del dia i la mateixa truita de patates de fa dècades.",
+    "hist.pull":"Hem canviat la cuina tres vegades. La barra, mai.",
+    "hist.cap":"La barra original, restaurada el 1980. La cara on s'hi recolzen els colzes és, sobretot, l'arxiu del barri.",
+    "amb.eyebrow":"L'Ambient","amb.h2":"Maó vist, fusta i una paret que canta.",
+    "amb.lead":"Quaranta-tres ràdios, una cafetera que no calla i taules de marbre per a tertúlies llargues.",
+    "amb.cap1":"La paret de les ràdios","amb.cap2":"El menjador del fons","amb.cap3":"Taules de marbre, premsa del dia",
+    "tro.eyebrow":"Trobar-nos","tro.h2":"A la cantonada de sempre.","tro.lead":"Plaça del Bonsuccés, al Raval. Tres minuts caminant des de Plaça Catalunya.",
+    "tro.addr":"Adreça","tro.addrNote":"El Raval · Ciutat Vella","tro.tel":"Telèfon","tro.hours":"Horari","tro.transit":"Com arribar",
+    "tro.h1":"Dilluns a dijous","tro.h2t":"Divendres i dissabte","tro.h3":"Diumenge","tro.closed":"tancat",
+    "tro.metro":"Metro","tro.bus":"Bus",
+    "foot.call":"Truca'ns","foot.craft":"Fet amb cura a Barcelona","foot.legal":"Avís legal · Política de privacitat"
+  },
+  es: {
+    "nav.history":"Historia","nav.find":"Cómo llegar",
+    "hero.kicker":"Plaça del Bonsuccés · El Raval","hero.kicker2":"Cien años abiertos",
+    "hero.h1a":"Un siglo","hero.h1b":"de historias","hero.h1c":"en el Raval.",
+    "hero.tag":"Café, tapas y buena conversación desde 1920. Una barra de madera tallada a mano, una pared de radios viejas y una plaza llena de sol.",
+    "hero.where":"Dónde","hero.when":"Hoy abierto","hero.whenNote":"Domingo cerrado",
+    "hist.eyebrow":"Historia","hist.h2":"Cien años de gente que entra y sale.",
+    "hist.lead":"Un negocio familiar que ha visto pasar guerras, bailes, elecciones y muchos lunes. La barra sigue siendo la misma.",
+    "hist.p1":"El Bar Castells abrió la persiana por primera vez en 1920, en una esquina de la plaza del Bonsuccés que entonces olía a barrio y a puerto. Desde entonces, cuatro generaciones han servido cafés por la mañana, vermuts al mediodía y últimas copas por la noche.",
+    "hist.p2":"El mueble principal, una barra de madera tallada a mano, con columnas salomónicas y espejos picados, se restauró en 1980 y se dejó tal cual: más carácter que pulido. Al fondo, una colección de radios de los años cuarenta y cincuenta sigue encendida y, de vez en cuando, sintonizada.",
+    "hist.p3":"Aquí no hay música ambiental ni carta digital. Hay voces, platos, prensa del día y la misma tortilla de patatas de hace décadas.",
+    "hist.pull":"Hemos cambiado la cocina tres veces. La barra, nunca.",
+    "hist.cap":"La barra original, restaurada en 1980. Donde se apoyan los codos es, sobre todo, el archivo del barrio.",
+    "amb.eyebrow":"El Ambiente","amb.h2":"Ladrillo visto, madera y una pared que canta.",
+    "amb.lead":"Cuarenta y tres radios, una cafetera que no calla y mesas de mármol para tertulias largas.",
+    "amb.cap1":"La pared de las radios","amb.cap2":"El comedor del fondo","amb.cap3":"Mesas de mármol, prensa del día",
+    "tro.eyebrow":"Cómo llegar","tro.h2":"En la esquina de siempre.","tro.lead":"Plaça del Bonsuccés, en el Raval. Tres minutos andando desde Plaza Catalunya.",
+    "tro.addr":"Dirección","tro.addrNote":"El Raval · Ciutat Vella","tro.tel":"Teléfono","tro.hours":"Horario","tro.transit":"Cómo llegar",
+    "tro.h1":"Lunes a jueves","tro.h2t":"Viernes y sábado","tro.h3":"Domingo","tro.closed":"cerrado",
+    "tro.metro":"Metro","tro.bus":"Bus",
+    "foot.call":"Llámanos","foot.craft":"Hecho con cuidado en Barcelona","foot.legal":"Aviso legal · Política de privacidad"
+  },
+  en: {
+    "nav.history":"Story","nav.find":"Find us",
+    "hero.kicker":"Plaça del Bonsuccés · El Raval","hero.kicker2":"A hundred years open",
+    "hero.h1a":"A century","hero.h1b":"of stories","hero.h1c":"in the Raval.",
+    "hero.tag":"Coffee, tapas and good conversation since 1920. A hand-carved wooden bar, a wall of vintage radios and a sunlit Barcelona square.",
+    "hero.where":"Where","hero.when":"Open today","hero.whenNote":"Closed Sunday",
+    "hist.eyebrow":"Our story","hist.h2":"A hundred years of people coming and going.",
+    "hist.lead":"A family-run bar that has watched wars, dances, elections and a great many Mondays go by. The counter hasn't moved.",
+    "hist.p1":"Bar Castells first raised its shutters in 1920, on a corner of the Plaça del Bonsuccés that, back then, smelled of neighbourhood and harbour. Since then, four generations have served coffees in the morning, vermouths at noon and last drinks at night.",
+    "hist.p2":"The centrepiece, a hand-carved wooden bar with twisted columns and foxed mirrors, was restored in 1980 and left as it was: more character than polish. At the back, a collection of 1940s and 50s radios is still switched on and, every now and then, tuned in.",
+    "hist.p3":"There's no background music, no digital menu. There are voices, plates, the day's papers, and the same potato omelette as decades ago.",
+    "hist.pull":"We've changed the kitchen three times. The bar, never.",
+    "hist.cap":"The original counter, restored in 1980. The side where elbows rest is, more than anything, the neighbourhood's archive.",
+    "amb.eyebrow":"The room","amb.h2":"Brick, wood and a wall that sings.",
+    "amb.lead":"Forty-three radios, an espresso machine that never stops, and marble tables made for long conversations.",
+    "amb.cap1":"The radio wall","amb.cap2":"The back dining room","amb.cap3":"Marble tables, today's papers",
+    "tro.eyebrow":"Find us","tro.h2":"On the same old corner.","tro.lead":"Plaça del Bonsuccés, in the Raval. A three-minute walk from Plaça Catalunya.",
+    "tro.addr":"Address","tro.addrNote":"El Raval · Ciutat Vella","tro.tel":"Phone","tro.hours":"Hours","tro.transit":"Getting here",
+    "tro.h1":"Mon — Thu","tro.h2t":"Fri & Sat","tro.h3":"Sunday","tro.closed":"closed",
+    "tro.metro":"Metro","tro.bus":"Bus",
+    "foot.call":"Call us","foot.craft":"Made with care in Barcelona","foot.legal":"Legal · Privacy"
+  }
+};
+
+function setLang(lang){
+  document.documentElement.lang = lang;
+  document.querySelectorAll("[data-i18n]").forEach(el=>{
+    const k = el.getAttribute("data-i18n");
+    const v = I18N[lang]?.[k];
+    if(v!=null) el.innerHTML = v;
+  });
+  document.querySelectorAll(".lang button").forEach(b=>{
+    b.classList.toggle("active", b.dataset.lang===lang);
+  });
+  try{localStorage.setItem("bc-lang",lang)}catch(e){}
+}
+document.querySelectorAll(".lang button").forEach(b=>{
+  b.addEventListener("click",()=>setLang(b.dataset.lang));
+});
+try{const saved = localStorage.getItem("bc-lang"); if(saved && I18N[saved]) setLang(saved);}catch(e){}
+
+/* mobile menu */
+const menuBtn = document.getElementById("menuBtn");
+const navLinks = document.getElementById("navLinks");
+menuBtn?.addEventListener("click",()=>navLinks.classList.toggle("open"));
+navLinks.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>navLinks.classList.remove("open")));
+
+</script>
+</body>
+</html>
