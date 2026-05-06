@@ -206,6 +206,7 @@ section{position:relative;z-index:2}
   aspect-ratio: 4/5;
   background:var(--stone);
   overflow:hidden;
+  border-radius:10px;
 }
 .hero-image img{width:100%;height:100%;object-fit:cover}
 .hero-image::after{
@@ -266,7 +267,7 @@ section{position:relative;z-index:2}
 .historia-text p{margin-bottom:1.1em;color:var(--ink-soft);font-size:17px;line-height:1.7}
 .historia-text p:first-child{font-size:19px;color:var(--ink)}
 .historia-figure{position:relative}
-.historia-figure img{width:100%;aspect-ratio: 4/5;object-fit:cover;background:var(--stone)}
+.historia-figure img{width:100%;aspect-ratio: 4/5;object-fit:cover;background:var(--stone);border-radius:10px}
 .historia-figure figcaption{
   font-family:var(--serif);font-style:italic;font-size:14px;
   color:var(--ink-mute);margin-top:14px;max-width:36ch;
@@ -278,6 +279,23 @@ section{position:relative;z-index:2}
   font-family:var(--serif);font-style:italic;font-weight:400;
   font-size:clamp(22px,2.4vw,30px);line-height:1.3;color:var(--ink);
   font-variation-settings:"opsz" 48;
+}
+.hist-contact{
+  margin-top:36px;
+  padding-top:24px;
+  border-top:1px solid var(--line);
+  display:flex;flex-wrap:wrap;gap:14px 28px;
+  font-size:14px;color:var(--ink-soft);
+}
+.hist-contact a{
+  display:inline-flex;align-items:center;gap:8px;
+  color:var(--ink);font-weight:500;
+  border-bottom:1px solid var(--line);padding-bottom:3px;
+  transition:color .25s, border-color .25s;
+}
+.hist-contact a:hover{color:var(--terra-deep);border-color:var(--terra)}
+.hist-contact .ic{
+  width:14px;height:14px;flex:none;color:var(--terra);
 }
 .pull::before{content:"“";color:var(--terra);font-size:1.4em;line-height:0;vertical-align:-.25em;margin-right:.1em}
 .pull::after{content:"”";color:var(--terra);font-size:1.4em;line-height:0;vertical-align:-.25em;margin-left:.05em}
@@ -303,6 +321,7 @@ section{position:relative;z-index:2}
 .ambient-grid figure{
   margin:0;overflow:hidden;background:var(--stone);
   position:relative;
+  border-radius:10px;
 }
 .ambient-grid img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s ease}
 .ambient-grid figure:hover img{transform:scale(1.04)}
@@ -358,10 +377,74 @@ section{position:relative;z-index:2}
   border:0;
   background:var(--stone);
   filter:saturate(.8) contrast(.95);
+  border-radius:10px;
 }
 @media (max-width:840px){
   .trobar-grid{grid-template-columns:1fr}
   .map-frame{min-height:340px}
+}
+
+/* ============ REVIEWS ============ */
+.reviews{padding-bottom:clamp(60px,8vw,120px)}
+.reviews-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:clamp(16px,2vw,28px);
+}
+.review{
+  background:var(--cream-2);
+  border:1px solid var(--line-soft);
+  border-radius:10px;
+  padding:clamp(22px,2.4vw,32px);
+  display:flex;flex-direction:column;gap:18px;
+  position:relative;
+}
+.review::before{
+  content:"“";
+  position:absolute;top:14px;right:22px;
+  font-family:var(--serif);font-style:italic;
+  font-size:64px;line-height:.6;color:var(--terra);
+  opacity:.3;font-variation-settings:"opsz" 144;
+}
+.review-stars{
+  display:flex;gap:3px;color:var(--terra);font-size:15px;letter-spacing:1px;
+}
+.review-text{
+  font-family:var(--serif);font-style:italic;font-weight:400;
+  font-size:clamp(15px,1.15vw,17px);line-height:1.55;color:var(--ink);
+  font-variation-settings:"opsz" 24;
+}
+.review-meta{
+  margin-top:auto;
+  padding-top:14px;border-top:1px solid var(--line-soft);
+  display:flex;align-items:center;justify-content:space-between;
+  font-size:12.5px;
+}
+.review-meta strong{color:var(--ink);font-weight:500}
+.review-meta .when{color:var(--ink-mute);font-family:var(--serif);font-style:italic;font-size:13px}
+.reviews-cta{
+  margin-top:clamp(28px,3vw,40px);
+  display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;
+  gap:18px;
+  padding-top:24px;border-top:1px solid var(--line);
+}
+.reviews-cta-text{
+  font-family:var(--serif);font-style:italic;
+  font-size:clamp(15px,1.2vw,18px);color:var(--ink-soft);
+  max-width:48ch;
+}
+.reviews-cta-text strong{color:var(--ink);font-style:normal;font-weight:500}
+.btn-google{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:12px 22px;
+  background:var(--ink);color:var(--cream);
+  font-size:13px;letter-spacing:.06em;font-weight:500;
+  border-radius:999px;
+  transition:background .25s, transform .25s;
+}
+.btn-google:hover{background:var(--terra);transform:translateY(-1px)}
+.btn-google svg{width:14px;height:14px}
+@media (max-width:840px){
+  .reviews-grid{grid-template-columns:1fr;gap:14px}
 }
 
 /* ============ FOOTER ============ */
@@ -528,6 +611,7 @@ img[data-ph]{
     </a>
     <nav class="nav-links" id="navLinks">
       <a href="#historia" data-i18n="nav.history">Història</a>
+      <a href="#ressenyes" data-i18n="nav.reviews">Ressenyes</a>
       <a href="#trobar" data-i18n="nav.find">Trobar-nos</a>
     </nav>
     <div style="display:flex;gap:14px;align-items:center">
@@ -603,6 +687,16 @@ img[data-ph]{
         <p data-i18n="hist.p2">El moble principal, una barra de fusta tallada a mà, amb columnes salomòniques i miralls picats, es va restaurar el 1980 i es va deixar tal com estava: més caràcter que polidesa. A la part del fons, una col·lecció de ràdios dels anys quaranta i cinquanta segueix encesa i, de tant en tant, sintonitzada.</p>
         <p data-i18n="hist.p3">Aquí no hi ha música ambiental ni carta digital. Hi ha veus, plats, premsa del dia i la mateixa truita de patates de fa dècades.</p>
         <blockquote class="pull" data-i18n="hist.pull">Hem canviat la cuina tres vegades. La barra, mai.</blockquote>
+        <div class="hist-contact">
+          <a href="https://instagram.com/bar.castells" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+            @bar.castells
+          </a>
+          <a href="tel:+34933021054" aria-label="Telèfon">
+            <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92V21a1 1 0 0 1-1.1 1 19.86 19.86 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.86 19.86 0 0 1 3.2 4.27 1 1 0 0 1 4.2 3.16h4.08a1 1 0 0 1 1 .75 12.4 12.4 0 0 0 .68 2.7 1 1 0 0 1-.23 1L8.1 9.24a16 16 0 0 0 6 6l1.63-1.63a1 1 0 0 1 1-.23 12.4 12.4 0 0 0 2.7.68 1 1 0 0 1 .75 1z"/></svg>
+            93 302 10 54
+          </a>
+        </div>
       </div>
       <figure class="historia-figure">
         <img src="images/barra-tallada.jpg" alt="Barra de fusta tallada amb ampolles i miralls" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'ph-img',style:'aspect-ratio:4/5',innerHTML:'images/barra-tallada.jpg<br>barra tallada a mà'}))"/>
@@ -648,11 +742,62 @@ img[data-ph]{
   </div>
 </section>
 
-<!-- ============ TROBAR-NOS ============ -->
-<section class="trobar" id="trobar" data-screen-label="04 Trobar-nos">
+<!-- ============ RESSENYES ============ -->
+<section class="reviews" id="ressenyes" data-screen-label="04 Ressenyes">
   <div class="wrap">
     <header class="section-head">
       <span class="numeral">03</span>
+      <div class="lead">
+        <span class="eyebrow" data-i18n="rev.eyebrow">Veu del barri</span>
+        <h2 data-i18n="rev.h2">El que diu qui ha entrat.</h2>
+        <p data-i18n="rev.lead">Ressenyes de clients a Google Maps. La conversa de la barra, però per escrit.</p>
+      </div>
+    </header>
+
+    <div class="reviews-grid">
+      <article class="review">
+        <div class="review-stars" aria-label="5 estrelles">★★★★★</div>
+        <p class="review-text" data-i18n="rev.q1">“Menjar local autèntic amb tapes delicioses a bon preu. El cafè també és excel·lent. T'hi sents benvingut i gaudeixes d'un ambient autèntic de barri. Només efectiu, cosa que va bé al negoci i filtra els turistes sorollosos.”</p>
+        <div class="review-meta">
+          <strong data-i18n="rev.n1">Robert</strong>
+          <span class="when" data-i18n="rev.t1">fa 1 any</span>
+        </div>
+      </article>
+      <article class="review">
+        <div class="review-stars" aria-label="5 estrelles">★★★★★</div>
+        <p class="review-text" data-i18n="rev.q2">“Lloc excel·lent per menjar. En un carrer lateral de la Rambla, s'omple al vespre. Bon menjar i a bon preu. El servei també és agradable. Recomanable.”</p>
+        <div class="review-meta">
+          <strong data-i18n="rev.n2">Colin W.</strong>
+          <span class="when" data-i18n="rev.t2">fa 6 mesos</span>
+        </div>
+      </article>
+      <article class="review">
+        <div class="review-stars" aria-label="5 estrelles">★★★★★</div>
+        <p class="review-text" data-i18n="rev.q3">“Un ambient local meravellós i del tot autèntic. Els preus eren molt més baixos que als restaurants per a turistes de la Rambla i la majoria dels clients semblaven gent del barri. Cada bar de tapes té la seva versió de la salsa de braves, i la d'aquí és la que més em va agradar de tota l'estada a Barcelona.”</p>
+        <div class="review-meta">
+          <strong data-i18n="rev.n3">Zeeshan S.</strong>
+          <span class="when" data-i18n="rev.t3">fa 2 anys</span>
+        </div>
+      </article>
+    </div>
+
+    <div class="reviews-cta">
+      <p class="reviews-cta-text" data-i18n="rev.cta">
+        <strong>Cent anys de gent que parla.</strong> Llegeix totes les ressenyes — o deixa la teva — a Google Maps.
+      </p>
+      <a class="btn-google" href="https://www.google.com/maps/place/Bar+Castells/@41.3841667,2.1697222,17z/data=!4m6!3m5!1s0x12a4a2f69c89fa91:0xb05593018a574837!8m2!3d41.3841667!4d2.1697222!16s%2Fg%2F1vlcyx0c" target="_blank" rel="noopener">
+        <span data-i18n="rev.btn">Veure a Google Maps</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TROBAR-NOS ============ -->
+<section class="trobar" id="trobar" data-screen-label="05 Trobar-nos">
+  <div class="wrap">
+    <header class="section-head">
+      <span class="numeral">04</span>
       <div class="lead">
         <span class="eyebrow" data-i18n="tro.eyebrow">Trobar-nos</span>
         <h2 data-i18n="tro.h2">A la cantonada de sempre.</h2>
@@ -893,7 +1038,17 @@ applyTweaks();
 <script>
 const I18N = {
   ca: {
-    "nav.history":"Història","nav.find":"Trobar-nos",
+    "nav.history":"Història","nav.find":"Trobar-nos","nav.reviews":"Ressenyes",
+    "rev.eyebrow":"Veu del barri","rev.h2":"El que diu qui ha entrat.",
+    "rev.lead":"Ressenyes reals de clients que han passat per la barra. Si en vols més, totes són a Google Maps.",
+    "rev.q1":"“Menjar local autèntic amb tapes delicioses a bon preu. El cafè també és excel·lent. T'hi sents benvingut i gaudeixes d'un ambient autèntic de barri. Només efectiu, cosa que va bé al negoci i filtra els turistes sorollosos.”",
+    "rev.n1":"Robert","rev.t1":"fa 1 any",
+    "rev.q2":"“Lloc excel·lent per menjar. En un carrer lateral de la Rambla, s'omple al vespre. Bon menjar i a bon preu. El servei també és agradable. Recomanable.”",
+    "rev.n2":"Colin W.","rev.t2":"fa 6 mesos",
+    "rev.q3":"“Un ambient local meravellós i del tot autèntic. Els preus eren molt més baixos que als restaurants per a turistes de la Rambla i la majoria dels clients semblaven gent del barri. Cada bar de tapes té la seva versió de la salsa de braves, i la d'aquí és la que més em va agradar de tota l'estada a Barcelona.”",
+    "rev.n3":"Zeeshan S.","rev.t3":"fa 2 anys",
+    "rev.cta":"<strong>Cent anys de gent que parla.</strong> Llegeix totes les ressenyes — o deixa la teva — a Google Maps.",
+    "rev.btn":"Veure a Google Maps",
     "hero.kicker":"Plaça del Bonsuccés · El Raval","hero.kicker2":"Cent anys oberts",
     "hero.h1a":"Un segle","hero.h1b":"d'històries","hero.h1c":"al Raval.",
     "hero.tag":"Cafè, tapes i bona conversa des de 1920. Una barra de fusta tallada a mà, una paret de ràdios velles i una plaça plena de sol.",
@@ -915,7 +1070,17 @@ const I18N = {
     "foot.call":"Truca'ns","foot.craft":"Fet amb cura a Barcelona","foot.legal":"Avís legal · Política de privacitat"
   },
   es: {
-    "nav.history":"Historia","nav.find":"Cómo llegar",
+    "nav.history":"Historia","nav.find":"Cómo llegar","nav.reviews":"Reseñas",
+    "rev.eyebrow":"Voz del barrio","rev.h2":"Lo que dice quien ha entrado.",
+    "rev.lead":"Reseñas reales de clientes que han pasado por la barra. Si quieres más, todas están en Google Maps.",
+    "rev.q1":"“Comida local auténtica con tapas deliciosas a buen precio. El café también es excelente. Te sientes bienvenido y disfrutas de un ambiente auténtico de barrio. Solo efectivo, algo que va bien al negocio y filtra a los turistas ruidosos.”",
+    "rev.n1":"Robert","rev.t1":"hace 1 año",
+    "rev.q2":"“Sitio excelente para comer. En una calle lateral de La Rambla, se llena al anochecer. Buena comida y a buen precio. El servicio también es agradable. Recomendable.”",
+    "rev.n2":"Colin W.","rev.t2":"hace 6 meses",
+    "rev.q3":"“Un ambiente local maravilloso y absolutamente auténtico. Los precios eran mucho más baratos que en los restaurantes turísticos de La Rambla y la mayoría de los clientes parecían ser gente del barrio. Cada bar de tapas tiene su propia versión de la salsa de bravas, y la de aquí es la que más me gustó de toda mi estancia en Barcelona.”",
+    "rev.n3":"Zeeshan S.","rev.t3":"hace 2 años",
+    "rev.cta":"<strong>Cien años de gente que habla.</strong> Lee todas las reseñas — o deja la tuya — en Google Maps.",
+    "rev.btn":"Ver en Google Maps",
     "hero.kicker":"Plaça del Bonsuccés · El Raval","hero.kicker2":"Cien años abiertos",
     "hero.h1a":"Un siglo","hero.h1b":"de historias","hero.h1c":"en el Raval.",
     "hero.tag":"Café, tapas y buena conversación desde 1920. Una barra de madera tallada a mano, una pared de radios viejas y una plaza llena de sol.",
@@ -937,7 +1102,17 @@ const I18N = {
     "foot.call":"Llámanos","foot.craft":"Hecho con cuidado en Barcelona","foot.legal":"Aviso legal · Política de privacidad"
   },
   en: {
-    "nav.history":"Story","nav.find":"Find us",
+    "nav.history":"Story","nav.find":"Find us","nav.reviews":"Reviews",
+    "rev.eyebrow":"Voices of the neighbourhood","rev.h2":"What people who walked in have said.",
+    "rev.lead":"Real reviews from people who have passed through the bar. For more, they're all on Google Maps.",
+    "rev.q1":"“Authentic local food with delicious tapas at a good price. Excellent coffee as well. You feel welcome there and can enjoy an authentic local atmosphere. Cash only, which is good for the business and filters out some noisy tourists.”",
+    "rev.n1":"Robert","rev.t1":"1 year ago",
+    "rev.q2":"“Excellent place for a meal. Located in a side street from La Rambla, fills up on an evening. Good food and well priced. Pleasant service too. Would recommend.”",
+    "rev.n2":"Colin W.","rev.t2":"6 months ago",
+    "rev.q3":"“Absolutely authentic wonderful local vibe. Prices were much cheaper than the tourist-trap restaurants on La Rambla and most of the patrons seemed to be locals. Every tapas bar has their own take on the Patata Bravas sauce and I loved theirs the best during my stay in Barcelona.”",
+    "rev.n3":"Zeeshan S.","rev.t3":"2 years ago",
+    "rev.cta":"<strong>A hundred years of people talking.</strong> Read all the reviews — or leave yours — on Google Maps.",
+    "rev.btn":"View on Google Maps",
     "hero.kicker":"Plaça del Bonsuccés · El Raval","hero.kicker2":"A hundred years open",
     "hero.h1a":"A century","hero.h1b":"of stories","hero.h1c":"in the Raval.",
     "hero.tag":"Coffee, tapas and good conversation since 1920. A hand-carved wooden bar, a wall of vintage radios and a sunlit Barcelona square.",
