@@ -14,9 +14,18 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
 
-<!-- Vercel Web Analytics (cookieless, GDPR-friendly) -->
-<script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
-<script defer src="/_vercel/insights/script.js"></script>
+<!-- Google Analytics 4 — gated by Klaro consent. Swap G-XXXXXXXXXX with the real GA4 Measurement ID. -->
+<script type="text/plain" data-type="application/javascript" data-name="google-analytics" async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script type="text/plain" data-type="application/javascript" data-name="google-analytics">
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX', { anonymize_ip: true });
+</script>
+
+<!-- Klaro! consent manager (CDN) -->
+<link rel="stylesheet" href="https://cdn.kiprotect.com/klaro/v0.7/klaro.min.css" />
+<script defer src="https://cdn.kiprotect.com/klaro/v0.7/klaro-no-css.js"></script>
 
 <style>
 /* ============ TOKENS ============ */
@@ -839,7 +848,8 @@ img[data-ph]{
         <iframe
           class="map-frame"
           title="Mapa Bar Castells"
-          src="https://www.google.com/maps?q=Pla%C3%A7a+del+Bonsucc%C3%A9s+1,+Barcelona&output=embed"
+          data-name="google-maps"
+          data-src="https://www.google.com/maps?q=Pla%C3%A7a+del+Bonsucc%C3%A9s+1,+Barcelona&output=embed"
           loading="lazy"
           referrerpolicy="no-referrer-when-downgrade"
           allowfullscreen></iframe>
@@ -855,6 +865,7 @@ img[data-ph]{
       <div class="left"><img src="images/logo.png" alt="Bar Castells" class="foot-logo"/><span class="foot-est">est. 1921</span></div>
       <div class="center">
         <a href="tel:+34933021054" data-i18n="foot.call">Truca'ns</a>
+        <a href="#" onclick="if(window.klaro)klaro.show();return false;" data-i18n="foot.cookies">Cookies</a>
       </div>
       <div class="right" data-i18n="foot.craft">Fet amb cura a Barcelona</div>
     </div>
@@ -1066,7 +1077,7 @@ const I18N = {
     "tro.addr":"Adreça","tro.addrNote":"El Raval · Ciutat Vella","tro.tel":"Telèfon","tro.hours":"Horari","tro.transit":"Com arribar",
     "tro.h1":"Dilluns a dijous","tro.h2t":"Divendres i dissabte","tro.h3":"Diumenge","tro.closed":"tancat",
     "tro.metro":"Metro","tro.bus":"Bus",
-    "foot.call":"Truca'ns","foot.craft":"Fet amb cura a Barcelona","foot.legal":"Avís legal · Política de privacitat"
+    "foot.call":"Truca'ns","foot.cookies":"Configurar cookies","foot.craft":"Fet amb cura a Barcelona","foot.legal":"Avís legal · Política de privacitat"
   },
   es: {
     "nav.history":"Historia","nav.find":"Cómo llegar","nav.reviews":"Reseñas",
@@ -1098,7 +1109,7 @@ const I18N = {
     "tro.addr":"Dirección","tro.addrNote":"El Raval · Ciutat Vella","tro.tel":"Teléfono","tro.hours":"Horario","tro.transit":"Cómo llegar",
     "tro.h1":"Lunes a jueves","tro.h2t":"Viernes y sábado","tro.h3":"Domingo","tro.closed":"cerrado",
     "tro.metro":"Metro","tro.bus":"Bus",
-    "foot.call":"Llámanos","foot.craft":"Hecho con cuidado en Barcelona","foot.legal":"Aviso legal · Política de privacidad"
+    "foot.call":"Llámanos","foot.cookies":"Configurar cookies","foot.craft":"Hecho con cuidado en Barcelona","foot.legal":"Aviso legal · Política de privacidad"
   },
   en: {
     "nav.history":"Story","nav.find":"Find us","nav.reviews":"Reviews",
@@ -1130,7 +1141,7 @@ const I18N = {
     "tro.addr":"Address","tro.addrNote":"El Raval · Ciutat Vella","tro.tel":"Phone","tro.hours":"Hours","tro.transit":"Getting here",
     "tro.h1":"Mon — Thu","tro.h2t":"Fri & Sat","tro.h3":"Sunday","tro.closed":"closed",
     "tro.metro":"Metro","tro.bus":"Bus",
-    "foot.call":"Call us","foot.craft":"Made with care in Barcelona","foot.legal":"Legal · Privacy"
+    "foot.call":"Call us","foot.cookies":"Cookie settings","foot.craft":"Made with care in Barcelona","foot.legal":"Legal · Privacy"
   }
 };
 
@@ -1145,6 +1156,8 @@ function setLang(lang){
     b.classList.toggle("active", b.dataset.lang===lang);
   });
   try{localStorage.setItem("bc-lang",lang)}catch(e){}
+  if(window.klaroConfig){ window.klaroConfig.lang = lang; }
+  if(window.klaro && window.klaro.render){ try{ window.klaro.render(window.klaroConfig, true); }catch(e){} }
 }
 document.querySelectorAll(".lang button").forEach(b=>{
   b.addEventListener("click",()=>setLang(b.dataset.lang));
@@ -1158,5 +1171,134 @@ menuBtn?.addEventListener("click",()=>navLinks.classList.toggle("open"));
 navLinks.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>navLinks.classList.remove("open")));
 
 </script>
+
+<!-- ============ KLARO CONSENT CONFIG ============ -->
+<script>
+(function(){
+  var savedLang = "ca";
+  try{ var s = localStorage.getItem("bc-lang"); if(s) savedLang = s; }catch(e){}
+  window.klaroConfig = {
+    version: 1,
+    elementID: "klaro",
+    storageMethod: "cookie",
+    cookieName: "bc-consent",
+    cookieExpiresAfterDays: 180,
+    default: false,
+    mustConsent: false,
+    acceptAll: true,
+    hideDeclineAll: false,
+    htmlTexts: true,
+    embedded: false,
+    styling: { theme: ["light","bottom","wide"] },
+    lang: savedLang,
+    translations: {
+      ca: {
+        consentModal: {
+          title: "Privadesa al Bar Castells",
+          description: "Utilitzem serveis externs (Google Analytics i Google Maps) que poden establir galetes. Tria què vols activar."
+        },
+        consentNotice: {
+          title: "Galetes i serveis externs",
+          description: "Aquest lloc utilitza Google Analytics per mesurar visites i Google Maps per mostrar la ubicació. Pots acceptar-ho tot o triar quins serveis activar.",
+          learnMore: "Gestionar preferències"
+        },
+        ok: "Accepta tot",
+        acceptAll: "Accepta tot",
+        acceptSelected: "Desa selecció",
+        decline: "Rebutja",
+        close: "Tanca",
+        save: "Desa",
+        purposes: { analytics: { title: "Analítica" }, maps: { title: "Mapes" } },
+        service: {
+          disableAll: { title: "Activa/desactiva tot", description: "Activa o desactiva tots els serveis." },
+          required: { title: "Sempre actiu", description: "Aquest servei és necessari." },
+          purposes: "Finalitats",
+          purpose: "Finalitat"
+        }
+      },
+      es: {
+        consentModal: {
+          title: "Privacidad en Bar Castells",
+          description: "Utilizamos servicios externos (Google Analytics y Google Maps) que pueden establecer cookies. Elige qué quieres activar."
+        },
+        consentNotice: {
+          title: "Cookies y servicios externos",
+          description: "Este sitio usa Google Analytics para medir visitas y Google Maps para mostrar la ubicación. Puedes aceptar todo o elegir qué servicios activar.",
+          learnMore: "Gestionar preferencias"
+        },
+        ok: "Aceptar todo",
+        acceptAll: "Aceptar todo",
+        acceptSelected: "Guardar selección",
+        decline: "Rechazar",
+        close: "Cerrar",
+        save: "Guardar",
+        purposes: { analytics: { title: "Analítica" }, maps: { title: "Mapas" } },
+        service: {
+          disableAll: { title: "Activar/desactivar todo", description: "Activa o desactiva todos los servicios." },
+          required: { title: "Siempre activo", description: "Este servicio es necesario." },
+          purposes: "Finalidades",
+          purpose: "Finalidad"
+        }
+      },
+      en: {
+        consentModal: {
+          title: "Privacy at Bar Castells",
+          description: "We use external services (Google Analytics and Google Maps) that may set cookies. Choose which ones to enable."
+        },
+        consentNotice: {
+          title: "Cookies and external services",
+          description: "This site uses Google Analytics to measure visits and Google Maps to show the location. You can accept all, or choose which services to enable.",
+          learnMore: "Manage preferences"
+        },
+        ok: "Accept all",
+        acceptAll: "Accept all",
+        acceptSelected: "Save selection",
+        decline: "Reject",
+        close: "Close",
+        save: "Save",
+        purposes: { analytics: { title: "Analytics" }, maps: { title: "Maps" } },
+        service: {
+          disableAll: { title: "Enable/disable all", description: "Enable or disable all services." },
+          required: { title: "Always required", description: "This service is required." },
+          purposes: "Purposes",
+          purpose: "Purpose"
+        }
+      }
+    },
+    services: [
+      {
+        name: "google-analytics",
+        purposes: ["analytics"],
+        cookies: [/^_ga/i, /^_gid$/i, /^_gat/i],
+        translations: {
+          ca: { title: "Google Analytics", description: "Mesurament anònim de visites." },
+          es: { title: "Google Analytics", description: "Medición anónima de visitas." },
+          en: { title: "Google Analytics", description: "Anonymous traffic measurement." }
+        }
+      },
+      {
+        name: "google-maps",
+        purposes: ["maps"],
+        translations: {
+          ca: { title: "Google Maps", description: "Mapa incrustat per a localitzar el bar." },
+          es: { title: "Google Maps", description: "Mapa incrustado para localizar el bar." },
+          en: { title: "Google Maps", description: "Embedded map to find the bar." }
+        }
+      }
+    ]
+  };
+})();
+</script>
+
+<!-- Klaro accent override to match site terra color -->
+<style>
+.klaro .cm-btn.cm-btn-success,
+.klaro .cookie-modal .cm-btn.cm-btn-success { background:#C8542A }
+.klaro .cm-btn.cm-btn-success:hover,
+.klaro .cookie-modal .cm-btn.cm-btn-success:hover { background:#A7401C }
+.klaro .cookie-notice a, .klaro .cookie-modal a { color:#A7401C }
+.klaro .cookie-notice .cm-link, .klaro .cookie-modal .cm-link { color:#A7401C }
+</style>
+
 </body>
 </html>
