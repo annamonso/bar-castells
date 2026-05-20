@@ -385,16 +385,39 @@ section{position:relative;z-index:2}
   background:var(--terra);color:var(--cream);
   font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;font-weight:500;
 }
+.map-col{
+  display:flex;flex-direction:column;gap:14px;
+  height:100%;
+}
 .map-frame{
-  width:100%;min-height:480px;height:100%;
+  width:100%;min-height:480px;
+  flex:1;
   border:0;
   background:var(--stone);
   filter:saturate(.8) contrast(.95);
   border-radius:10px;
 }
+.map-col .context-notice{
+  flex:1;min-height:480px;
+}
+.map-open{
+  align-self:flex-start;
+  display:inline-flex;align-items:center;gap:8px;
+  padding:10px 18px;
+  border:1px solid var(--line);
+  border-radius:999px;
+  font-size:13px;font-weight:500;letter-spacing:.04em;
+  color:var(--ink);background:var(--cream);
+  transition:background .25s, color .25s, border-color .25s, transform .25s;
+}
+.map-open:hover{
+  background:var(--ink);color:var(--cream);border-color:var(--ink);
+  transform:translateY(-1px);
+}
 @media (max-width:840px){
   .trobar-grid{grid-template-columns:1fr}
   .map-frame{min-height:340px}
+  .map-col .context-notice{min-height:340px}
 }
 
 /* ============ REVIEWS ============ */
@@ -844,7 +867,7 @@ img[data-ph]{
           </dd>
         </div>
       </dl>
-      <div>
+      <div class="map-col">
         <iframe
           class="map-frame"
           title="Mapa Bar Castells"
@@ -853,6 +876,12 @@ img[data-ph]{
           loading="lazy"
           referrerpolicy="no-referrer-when-downgrade"
           allowfullscreen></iframe>
+        <a class="map-open"
+           href="https://www.google.com/maps/place/Pla%C3%A7a+del+Bonsucc%C3%A9s+1,+Barcelona"
+           target="_blank" rel="noopener">
+          <span data-i18n="tro.openMaps">Obrir a Google Maps</span>
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
+        </a>
       </div>
     </div>
   </div>
@@ -1076,7 +1105,7 @@ const I18N = {
     "tro.eyebrow":"Trobar-nos","tro.h2":"A la cantonada de sempre.","tro.lead":"Plaça del Bonsuccés, al Raval. Tres minuts caminant des de Plaça Catalunya.",
     "tro.addr":"Adreça","tro.addrNote":"El Raval · Ciutat Vella","tro.tel":"Telèfon","tro.hours":"Horari","tro.transit":"Com arribar",
     "tro.h1":"Dilluns a dijous","tro.h2t":"Divendres i dissabte","tro.h3":"Diumenge","tro.closed":"tancat",
-    "tro.metro":"Metro","tro.bus":"Bus",
+    "tro.metro":"Metro","tro.bus":"Bus","tro.openMaps":"Obrir a Google Maps",
     "foot.call":"Truca'ns","foot.cookies":"Configurar cookies","foot.craft":"Fet amb cura a Barcelona","foot.legal":"Avís legal · Política de privacitat"
   },
   es: {
@@ -1108,7 +1137,7 @@ const I18N = {
     "tro.eyebrow":"Cómo llegar","tro.h2":"En la esquina de siempre.","tro.lead":"Plaça del Bonsuccés, en el Raval. Tres minutos andando desde Plaza Catalunya.",
     "tro.addr":"Dirección","tro.addrNote":"El Raval · Ciutat Vella","tro.tel":"Teléfono","tro.hours":"Horario","tro.transit":"Cómo llegar",
     "tro.h1":"Lunes a jueves","tro.h2t":"Viernes y sábado","tro.h3":"Domingo","tro.closed":"cerrado",
-    "tro.metro":"Metro","tro.bus":"Bus",
+    "tro.metro":"Metro","tro.bus":"Bus","tro.openMaps":"Abrir en Google Maps",
     "foot.call":"Llámanos","foot.cookies":"Configurar cookies","foot.craft":"Hecho con cuidado en Barcelona","foot.legal":"Aviso legal · Política de privacidad"
   },
   en: {
@@ -1140,7 +1169,7 @@ const I18N = {
     "tro.eyebrow":"Find us","tro.h2":"On the same old corner.","tro.lead":"Plaça del Bonsuccés, in the Raval. A three-minute walk from Plaça Catalunya.",
     "tro.addr":"Address","tro.addrNote":"El Raval · Ciutat Vella","tro.tel":"Phone","tro.hours":"Hours","tro.transit":"Getting here",
     "tro.h1":"Mon — Thu","tro.h2t":"Fri & Sat","tro.h3":"Sunday","tro.closed":"closed",
-    "tro.metro":"Metro","tro.bus":"Bus",
+    "tro.metro":"Metro","tro.bus":"Bus","tro.openMaps":"Open in Google Maps",
     "foot.call":"Call us","foot.cookies":"Cookie settings","foot.craft":"Made with care in Barcelona","foot.legal":"Legal · Privacy"
   }
 };
@@ -1202,6 +1231,11 @@ navLinks.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>navLink
           description: "Aquest lloc utilitza Google Analytics per mesurar visites i Google Maps per mostrar la ubicació. Pots acceptar-ho tot o triar quins serveis activar.",
           learnMore: "Gestionar preferències"
         },
+        contextualConsent: {
+          description: "<strong>Mapa de Google Maps</strong>Per veure'l aquí mateix, accepta les galetes. També pots obrir-lo directament amb el botó de sota.",
+          acceptOnce: "Mostra el mapa",
+          acceptAlways: "Mostra el mapa i recorda-ho"
+        },
         ok: "Accepta tot",
         acceptAll: "Accepta tot",
         acceptSelected: "Desa selecció",
@@ -1226,6 +1260,11 @@ navLinks.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>navLink
           description: "Este sitio usa Google Analytics para medir visitas y Google Maps para mostrar la ubicación. Puedes aceptar todo o elegir qué servicios activar.",
           learnMore: "Gestionar preferencias"
         },
+        contextualConsent: {
+          description: "<strong>Mapa de Google Maps</strong>Para verlo aquí mismo, acepta las cookies. También puedes abrirlo directamente con el botón de abajo.",
+          acceptOnce: "Mostrar el mapa",
+          acceptAlways: "Mostrar el mapa y recordarlo"
+        },
         ok: "Aceptar todo",
         acceptAll: "Aceptar todo",
         acceptSelected: "Guardar selección",
@@ -1249,6 +1288,11 @@ navLinks.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>navLink
           title: "Cookies and external services",
           description: "This site uses Google Analytics to measure visits and Google Maps to show the location. You can accept all, or choose which services to enable.",
           learnMore: "Manage preferences"
+        },
+        contextualConsent: {
+          description: "<strong>Google Maps</strong>To view the map here, accept cookies. You can also open it directly with the button below.",
+          acceptOnce: "Show the map",
+          acceptAlways: "Show map and remember"
         },
         ok: "Accept all",
         acceptAll: "Accept all",
@@ -1412,14 +1456,77 @@ navLinks.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>navLink
 .klaro .cookie-modal .cm-header .hide{
   color:var(--ink-mute)!important;
 }
+.context-notice,
 .klaro .context-notice{
   background:var(--cream-2)!important;
   border:1px solid var(--line)!important;
   border-radius:10px!important;
   color:var(--ink)!important;
   font-family:var(--sans)!important;
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:center!important;
+  justify-content:center!important;
+  text-align:center!important;
+  padding:36px 28px!important;
+  width:100%!important;
+  position:relative!important;
+  overflow:hidden!important;
 }
-.klaro .context-notice a{color:var(--terra-deep)!important}
+/* subtle paper-grain echo inside the placeholder */
+.context-notice::before,
+.klaro .context-notice::before{
+  content:"";
+  position:absolute;inset:0;
+  pointer-events:none;
+  opacity:.4;
+  mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.16  0 0 0 0 0.13  0 0 0 0 0.10  0 0 0 0.04 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+/* decorative pin glyph */
+.context-notice::after,
+.klaro .context-notice::after{
+  content:"";
+  width:48px;height:48px;
+  position:absolute;top:42px;left:50%;transform:translateX(-50%);
+  background:no-repeat center/contain url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23A7401C' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'><path d='M12 21s-7-7.5-7-12a7 7 0 0 1 14 0c0 4.5-7 12-7 12z'/><circle cx='12' cy='9' r='2.5'/></svg>");
+  opacity:.85;
+}
+.context-notice > *,
+.klaro .context-notice > *{position:relative;z-index:1}
+.context-notice p,
+.context-notice .description,
+.klaro .context-notice p,
+.klaro .context-notice .description{
+  font-family:var(--sans)!important;
+  font-size:15px!important;line-height:1.55!important;
+  color:var(--ink-soft)!important;
+  margin:64px 0 18px 0!important;
+  max-width:42ch!important;
+}
+.context-notice strong,
+.klaro .context-notice strong{
+  display:block;
+  font-family:var(--serif)!important;font-style:italic;
+  font-weight:500!important;font-size:22px!important;
+  color:var(--ink)!important;
+  margin-bottom:6px;
+  letter-spacing:-.01em;
+  font-variation-settings:"opsz" 24;
+}
+.context-notice a,
+.klaro .context-notice a{color:var(--terra-deep)!important;font-weight:500!important}
+.context-notice .cm-link,
+.klaro .context-notice .cm-link{
+  margin-top:10px!important;
+  font-size:12.5px!important;
+  color:var(--ink-mute)!important;
+  text-decoration:underline!important;
+}
+.context-notice .cm-btn,
+.klaro .context-notice .cm-btn{
+  margin-top:4px!important;
+}
 @media (max-width:840px){
   .klaro .cookie-notice{
     margin:0 12px 12px 12px!important;
