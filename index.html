@@ -1,12 +1,12 @@
 <!doctype html>
-<html lang="ca">
+<html lang="es">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Bar Castells · Un segle d'històries al Raval</title>
-<meta name="description" content="Cafè, tapes i bona conversa des de 1921. Bar Castells, a la Plaça del Bonsuccés, al cor del Raval de Barcelona." />
-<meta property="og:title" content="Bar Castells · Un segle d'històries al Raval" />
-<meta property="og:description" content="Cafè, tapes i bona conversa des de 1921. Plaça del Bonsuccés, Barcelona." />
+<title>Bar Castells · Un siglo de historias en el Raval</title>
+<meta name="description" content="Café, tapas y buena conversación desde 1921. Bar Castells, en la Plaça del Bonsuccés, en el corazón del Raval de Barcelona." />
+<meta property="og:title" content="Bar Castells · Un siglo de historias en el Raval" />
+<meta property="og:description" content="Café, tapas y buena conversación desde 1921. Plaça del Bonsuccés, Barcelona." />
 <meta property="og:image" content="images/fachada-terraza.jpg" />
 <meta property="og:type" content="website" />
 <meta name="theme-color" content="#F2EBDD" />
@@ -519,6 +519,49 @@ footer{
   .foot-grid .right{text-align:center}
   .foot-bottom{flex-direction:column;gap:8px;text-align:center}
 }
+.foot-bottom a{
+  color:rgba(242,235,221,.65);
+  border-bottom:1px solid transparent;padding-bottom:1px;
+  transition:color .2s ease,border-color .2s ease;
+}
+.foot-bottom a:hover{color:var(--terra);border-color:var(--terra)}
+
+/* ============ LEGAL / PRIVACY MODAL ============ */
+.legal-overlay{
+  position:fixed;inset:0;z-index:400;
+  display:flex;align-items:center;justify-content:center;
+  padding:24px;
+  background:rgba(42,37,32,.55);
+  backdrop-filter:blur(2px);
+}
+.legal-overlay[hidden]{display:none}
+.legal-sheet{
+  position:relative;
+  background:var(--cream);color:var(--ink);
+  border:1px solid var(--line);border-radius:12px;
+  box-shadow:0 24px 60px rgba(42,37,32,.28), 0 4px 12px rgba(42,37,32,.12);
+  max-width:640px;width:100%;
+  max-height:calc(100vh - 48px);overflow:auto;
+}
+.legal-body{padding:36px 40px 40px}
+.legal-body h2{font-family:var(--serif);font-size:28px;font-weight:500;margin:0 0 20px}
+.legal-body h3{font-family:var(--serif);font-size:19px;font-weight:500;color:var(--terra-deep);margin:24px 0 8px}
+.legal-body h3:first-of-type{margin-top:0}
+.legal-body p{font-family:var(--sans);font-size:15px;line-height:1.65;color:var(--ink-soft);margin:0}
+.legal-body a{color:var(--terra-deep);border-bottom:1px solid var(--line);}
+.legal-body a:hover{color:var(--terra);border-color:var(--terra)}
+.legal-close{
+  position:absolute;top:14px;right:16px;
+  width:36px;height:36px;line-height:1;
+  background:transparent;border:none;cursor:pointer;
+  font-size:26px;color:var(--ink-mute);border-radius:999px;
+  transition:color .2s ease,background .2s ease;
+}
+.legal-close:hover{color:var(--ink);background:var(--cream-2)}
+@media (max-width:840px){
+  .legal-body{padding:28px 22px 30px}
+  .legal-body h2{font-size:24px}
+}
 
 /* ============ TWEAKS PANEL ============ */
 .tw-panel{
@@ -646,14 +689,14 @@ img[data-ph]{
       <span class="est">Ciutat Vella · 1921</span>
     </a>
     <nav class="nav-links" id="navLinks">
-      <a href="#historia" data-i18n="nav.history">Història</a>
-      <a href="#ressenyes" data-i18n="nav.reviews">Ressenyes</a>
-      <a href="#trobar" data-i18n="nav.find">Trobar-nos</a>
+      <a href="#historia" data-i18n="nav.history">Historia</a>
+      <a href="#ressenyes" data-i18n="nav.reviews">Reseñas</a>
+      <a href="#trobar" data-i18n="nav.find">Cómo llegar</a>
     </nav>
     <div style="display:flex;gap:14px;align-items:center">
       <div class="lang" role="tablist" aria-label="Language">
-        <button data-lang="ca" class="active">CA</button>
-        <button data-lang="es">ES</button>
+        <button data-lang="ca">CA</button>
+        <button data-lang="es" class="active">ES</button>
         <button data-lang="en">EN</button>
       </div>
       <button class="menu-btn" aria-label="Menu" id="menuBtn"><span></span><span></span><span></span></button>
@@ -668,31 +711,31 @@ img[data-ph]{
       <div class="hero-meta">
         <span data-i18n="hero.kicker">Plaça del Bonsuccés · El Raval</span>
         <span class="dot" aria-hidden="true"></span>
-        <span data-i18n="hero.kicker2">Cent anys oberts</span>
+        <span data-i18n="hero.kicker2">Cien años abiertos</span>
       </div>
       <h1>
-        <span data-i18n="hero.h1a">Un segle</span><br/>
-        <em data-i18n="hero.h1b">d'històries</em><br/>
-        <span data-i18n="hero.h1c">al Raval.</span>
+        <span data-i18n="hero.h1a">Un siglo</span><br/>
+        <em data-i18n="hero.h1b">de historias</em><br/>
+        <span data-i18n="hero.h1c">en el Raval.</span>
       </h1>
       <p class="hero-tag" data-i18n="hero.tag">
-        Cafè, tapes i bona conversa des de 1921. Una barra de marbre,
-        una estanteria de fusta i una plaça plena de sol.
+        Café, tapas y buena conversación desde 1921. Una barra de mármol,
+        una estantería de madera y una plaza llena de sol.
       </p>
       <dl class="hero-info">
         <div>
-          <dt data-i18n="hero.where">On som</dt>
+          <dt data-i18n="hero.where">Dónde</dt>
           <dd><strong>Plaça del Bonsuccés, 1</strong><br/>08001 Barcelona</dd>
         </div>
         <div>
-          <dt data-i18n="hero.when">Avui obert</dt>
-          <dd><strong>8.00 — 01.00 h</strong><br/><span data-i18n="hero.whenNote">Diumenge tancat</span></dd>
+          <dt data-i18n="hero.when">Hoy abierto</dt>
+          <dd><strong>8.00 — 01.00 h</strong><br/><span data-i18n="hero.whenNote">Domingo cerrado</span></dd>
         </div>
       </dl>
     </div>
     <div class="hero-image">
-      <img src="images/fachada-terraza.jpg" alt="Façana del Bar Castells amb el para-sol vermell a la plaça" loading="eager" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
-      <div class="ph-img" style="display:none;position:absolute;inset:0">images/fachada-terraza.jpg<br/>façana amb para-sol</div>
+      <img src="images/fachada-terraza.jpg" alt="Fachada del Bar Castells con el toldo rojo en la plaza" loading="eager" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+      <div class="ph-img" style="display:none;position:absolute;inset:0">images/fachada-terraza.jpg<br/>fachada con toldo</div>
     </div>
   </div>
 </section>
@@ -700,8 +743,8 @@ img[data-ph]{
 <!-- ============ MARQUEE ============ -->
 <div class="marquee" aria-hidden="true">
   <div class="marquee-track">
-    <span>Truita de patates <span class="sep">·</span> Vermut Castells <span class="sep">·</span> Cafè sol <span class="sep">·</span> Pa amb tomàquet <span class="sep">·</span> Bombes del Raval <span class="sep">·</span> Esmorzars de forquilla <span class="sep">·</span> Plats del dia <span class="sep">·</span> Tertúlia de barri <span class="sep">·</span></span>
-    <span>Truita de patates <span class="sep">·</span> Vermut Castells <span class="sep">·</span> Cafè sol <span class="sep">·</span> Pa amb tomàquet <span class="sep">·</span> Bombes del Raval <span class="sep">·</span> Esmorzars de forquilla <span class="sep">·</span> Plats del dia <span class="sep">·</span> Tertúlia de barri <span class="sep">·</span></span>
+    <span>Tortilla de patatas <span class="sep">·</span> Vermut Castells <span class="sep">·</span> Café solo <span class="sep">·</span> Pan con tomate <span class="sep">·</span> Bombas del Raval <span class="sep">·</span> Almuerzos de tenedor <span class="sep">·</span> Platos del día <span class="sep">·</span> Tertulia de barrio <span class="sep">·</span></span>
+    <span>Tortilla de patatas <span class="sep">·</span> Vermut Castells <span class="sep">·</span> Café solo <span class="sep">·</span> Pan con tomate <span class="sep">·</span> Bombas del Raval <span class="sep">·</span> Almuerzos de tenedor <span class="sep">·</span> Platos del día <span class="sep">·</span> Tertulia de barrio <span class="sep">·</span></span>
   </div>
 </div>
 
@@ -711,28 +754,28 @@ img[data-ph]{
     <header class="section-head">
       <span class="numeral">01</span>
       <div class="lead">
-        <span class="eyebrow" data-i18n="hist.eyebrow">Història</span>
-        <h2 data-i18n="hist.h2">Cent anys de gent que entra i surt.</h2>
-        <p data-i18n="hist.lead">Un negoci familiar que ha vist passar guerres, balls, eleccions i molts dilluns. La barra continua sent la mateixa.</p>
+        <span class="eyebrow" data-i18n="hist.eyebrow">Historia</span>
+        <h2 data-i18n="hist.h2">Cien años de gente que entra y sale.</h2>
+        <p data-i18n="hist.lead">Un negocio familiar que ha visto pasar guerras, bailes, elecciones y muchos lunes. La barra sigue siendo la misma.</p>
       </div>
     </header>
 
     <div class="historia-grid">
       <div class="historia-text">
-        <p class="drop" data-i18n="hist.p1">El Bar Castells va obrir la persiana per primera vegada el 1921, en una cantonada de la plaça del Bonsuccés que aleshores feia olor de barri i de port. Des de llavors, quatre generacions han servit cafès al matí, vermuts al migdia i últimes copes a la nit.</p>
-        <p data-i18n="hist.p2">El moble principal, una barra de marbre amb una estanteria de fusta tallada a mà — columnes salomòniques i miralls picats —, es va restaurar el 1980 i es va deixar tal com estava: més caràcter que polidesa. A la part del fons, una col·lecció de ràdios dels anys quaranta i cinquanta segueix encesa i, de tant en tant, sintonitzada.</p>
-        <p data-i18n="hist.p3">Aquí no hi ha música ambiental ni carta digital. Hi ha veus, plats, premsa del dia i la mateixa truita de patates de fa dècades.</p>
-        <blockquote class="pull" data-i18n="hist.pull">Hem canviat la cuina tres vegades. La barra, mai.</blockquote>
+        <p class="drop" data-i18n="hist.p1">El Bar Castells abrió la persiana por primera vez en 1921, en una esquina de la plaza del Bonsuccés que entonces olía a barrio y a puerto. Desde entonces, cuatro generaciones han servido cafés por la mañana, vermuts al mediodía y últimas copas por la noche.</p>
+        <p data-i18n="hist.p2">El mueble principal, una barra de mármol con una estantería de madera tallada a mano — columnas salomónicas y espejos picados —, se restauró en 1980 y se dejó tal cual: más carácter que pulido. Al fondo, una colección de radios de los años cuarenta y cincuenta sigue encendida y, de vez en cuando, sintonizada.</p>
+        <p data-i18n="hist.p3">Aquí no hay música ambiental ni carta digital. Hay voces, platos, prensa del día y la misma tortilla de patatas de hace décadas.</p>
+        <blockquote class="pull" data-i18n="hist.pull">Hemos cambiado la cocina tres veces. La barra, nunca.</blockquote>
         <div class="hist-contact">
-          <a href="tel:+34933021054" aria-label="Telèfon">
+          <a href="tel:+34933021054" aria-label="Teléfono">
             <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92V21a1 1 0 0 1-1.1 1 19.86 19.86 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.86 19.86 0 0 1 3.2 4.27 1 1 0 0 1 4.2 3.16h4.08a1 1 0 0 1 1 .75 12.4 12.4 0 0 0 .68 2.7 1 1 0 0 1-.23 1L8.1 9.24a16 16 0 0 0 6 6l1.63-1.63a1 1 0 0 1 1-.23 12.4 12.4 0 0 0 2.7.68 1 1 0 0 1 .75 1z"/></svg>
             93 302 10 54
           </a>
         </div>
       </div>
       <figure class="historia-figure">
-        <img src="images/estanteria-tallada.jpg" alt="Estanteria de fusta tallada amb ampolles i miralls" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'ph-img',style:'aspect-ratio:4/5',innerHTML:'images/estanteria-tallada.jpg<br>estanteria tallada a mà'}))"/>
-        <figcaption data-i18n="hist.cap">L'estanteria original, restaurada el 1980.</figcaption>
+        <img src="images/estanteria-tallada.jpg" alt="Estantería de madera tallada con botellas y espejos" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'ph-img',style:'aspect-ratio:4/5',innerHTML:'images/estanteria-tallada.jpg<br>estantería tallada a mano'}))"/>
+        <figcaption data-i18n="hist.cap">La estantería original, restaurada en 1980.</figcaption>
       </figure>
     </div>
   </div>
@@ -744,30 +787,30 @@ img[data-ph]{
     <header class="section-head">
       <span class="numeral">02</span>
       <div class="lead">
-        <span class="eyebrow" data-i18n="amb.eyebrow">L'Ambient</span>
-        <h2 data-i18n="amb.h2">Maó vist, fusta i una paret <em style="font-style:italic">que canta</em>.</h2>
-        <p data-i18n="amb.lead">Quaranta-tres ràdios, una cafetera que no calla i taules de marbre per a tertúlies llargues.</p>
+        <span class="eyebrow" data-i18n="amb.eyebrow">El Ambiente</span>
+        <h2 data-i18n="amb.h2">Ladrillo visto, madera y una pared <em style="font-style:italic">que canta</em>.</h2>
+        <p data-i18n="amb.lead">Cuarenta y tres radios, una cafetera que no calla y mesas de mármol para tertulias largas.</p>
       </div>
     </header>
 
     <div class="ambient-grid">
       <figure class="a-1">
-        <img src="images/radios-pared.jpg" alt="Paret de ràdios antigues amb llum càlida" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'ph-img',style:'width:100%;height:100%',innerHTML:'images/radios-pared.jpg<br>paret de ràdios'}))"/>
-        <figcaption class="cap" data-i18n="amb.cap1">La paret de les ràdios</figcaption>
+        <img src="images/radios-pared.jpg" alt="Pared de radios antiguas con luz cálida" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'ph-img',style:'width:100%;height:100%',innerHTML:'images/radios-pared.jpg<br>pared de radios'}))"/>
+        <figcaption class="cap" data-i18n="amb.cap1">La pared de las radios</figcaption>
       </figure>
       <figure class="a-2">
-        <img src="images/cafetera.jpg" alt="Cafetera espresso d'acer" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'ph-img',style:'width:100%;height:100%',innerHTML:'images/cafetera.jpg<br>cafetera'}))"/>
+        <img src="images/cafetera.jpg" alt="Cafetera espresso de acero" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'ph-img',style:'width:100%;height:100%',innerHTML:'images/cafetera.jpg<br>cafetera'}))"/>
       </figure>
       <figure class="a-3">
-        <img src="images/comedor-ladrillo.jpg" alt="Menjador amb parets de maó" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'ph-img',style:'width:100%;height:100%',innerHTML:'images/comedor-ladrillo.jpg<br>menjador de maó'}))"/>
-        <figcaption class="cap" data-i18n="amb.cap2">El menjador del fons</figcaption>
+        <img src="images/comedor-ladrillo.jpg" alt="Comedor con paredes de ladrillo" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'ph-img',style:'width:100%;height:100%',innerHTML:'images/comedor-ladrillo.jpg<br>comedor de ladrillo'}))"/>
+        <figcaption class="cap" data-i18n="amb.cap2">El comedor del fondo</figcaption>
       </figure>
       <figure class="a-4">
-        <img src="images/radios-detalle.jpg" alt="Detall d'una ràdio antiga" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'ph-img',style:'width:100%;height:100%',innerHTML:'images/radios-detalle.jpg<br>detall ràdio'}))"/>
+        <img src="images/radios-detalle.jpg" alt="Detalle de una radio antigua" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'ph-img',style:'width:100%;height:100%',innerHTML:'images/radios-detalle.jpg<br>detalle radio'}))"/>
       </figure>
       <figure class="a-5">
-        <img src="images/comedor-amplio.jpg" alt="Sala àmplia amb taules de marbre" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'ph-img',style:'width:100%;height:100%',innerHTML:'images/comedor-amplio.jpg<br>sala marbre'}))"/>
-        <figcaption class="cap" data-i18n="amb.cap3">Taules de marbre, premsa del dia</figcaption>
+        <img src="images/comedor-amplio.jpg" alt="Sala amplia con mesas de mármol" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'ph-img',style:'width:100%;height:100%',innerHTML:'images/comedor-amplio.jpg<br>sala mármol'}))"/>
+        <figcaption class="cap" data-i18n="amb.cap3">Mesas de mármol, prensa del día</figcaption>
       </figure>
     </div>
 
@@ -780,45 +823,45 @@ img[data-ph]{
     <header class="section-head">
       <span class="numeral">03</span>
       <div class="lead">
-        <span class="eyebrow" data-i18n="rev.eyebrow">Veu del barri</span>
-        <h2 data-i18n="rev.h2">El que diu qui ha entrat.</h2>
-        <p data-i18n="rev.lead">Ressenyes de clients a Google Maps. La conversa de la barra, però per escrit.</p>
+        <span class="eyebrow" data-i18n="rev.eyebrow">Voz del barrio</span>
+        <h2 data-i18n="rev.h2">Lo que dice quien ha entrado.</h2>
+        <p data-i18n="rev.lead">Reseñas de clientes en Google Maps. La conversación de la barra, pero por escrito.</p>
       </div>
     </header>
 
     <div class="reviews-grid">
       <article class="review">
-        <div class="review-stars" aria-label="5 estrelles">★★★★★</div>
-        <p class="review-text" data-i18n="rev.q1">“Menjar local autèntic amb tapes delicioses a bon preu. El cafè també és excel·lent. T'hi sents benvingut i gaudeixes d'un ambient autèntic de barri. Només efectiu, cosa que va bé al negoci i filtra els turistes sorollosos.”</p>
+        <div class="review-stars" aria-label="5 estrellas">★★★★★</div>
+        <p class="review-text" data-i18n="rev.q1">“Comida local auténtica con tapas deliciosas a buen precio. El café también es excelente. Te sientes bienvenido y disfrutas de un ambiente auténtico de barrio. Solo efectivo, algo que va bien al negocio y filtra a los turistas ruidosos.”</p>
         <div class="review-meta">
           <strong data-i18n="rev.n1">Robert</strong>
-          <span class="when" data-i18n="rev.t1">fa 1 any</span>
+          <span class="when" data-i18n="rev.t1">hace 1 año</span>
         </div>
       </article>
       <article class="review">
-        <div class="review-stars" aria-label="5 estrelles">★★★★★</div>
-        <p class="review-text" data-i18n="rev.q2">“Lloc excel·lent per menjar. En un carrer lateral de la Rambla, s'omple al vespre. Bon menjar i a bon preu. El servei també és agradable. Recomanable.”</p>
+        <div class="review-stars" aria-label="5 estrellas">★★★★★</div>
+        <p class="review-text" data-i18n="rev.q2">“Sitio excelente para comer. En una calle lateral de La Rambla, se llena al anochecer. Buena comida y a buen precio. El servicio también es agradable. Recomendable.”</p>
         <div class="review-meta">
           <strong data-i18n="rev.n2">Colin W.</strong>
-          <span class="when" data-i18n="rev.t2">fa 6 mesos</span>
+          <span class="when" data-i18n="rev.t2">hace 6 meses</span>
         </div>
       </article>
       <article class="review">
-        <div class="review-stars" aria-label="5 estrelles">★★★★★</div>
-        <p class="review-text" data-i18n="rev.q3">“Un ambient local meravellós i del tot autèntic. Els preus eren molt més baixos que als restaurants per a turistes de la Rambla i la majoria dels clients semblaven gent del barri. Cada bar de tapes té la seva versió de la salsa de braves, i la d'aquí és la que més em va agradar de tota l'estada a Barcelona.”</p>
+        <div class="review-stars" aria-label="5 estrellas">★★★★★</div>
+        <p class="review-text" data-i18n="rev.q3">“Un ambiente local maravilloso y absolutamente auténtico. Los precios eran mucho más baratos que en los restaurantes turísticos de La Rambla y la mayoría de los clientes parecían ser gente del barrio. Cada bar de tapas tiene su propia versión de la salsa de bravas, y la de aquí es la que más me gustó de toda mi estancia en Barcelona.”</p>
         <div class="review-meta">
           <strong data-i18n="rev.n3">Zeeshan S.</strong>
-          <span class="when" data-i18n="rev.t3">fa 2 anys</span>
+          <span class="when" data-i18n="rev.t3">hace 2 años</span>
         </div>
       </article>
     </div>
 
     <div class="reviews-cta">
       <p class="reviews-cta-text" data-i18n="rev.cta">
-        <strong>Cent anys de gent que parla.</strong> Llegeix totes les ressenyes — o deixa la teva — a Google Maps.
+        <strong>Cien años de gente que habla.</strong> Lee todas las reseñas — o deja la tuya — en Google Maps.
       </p>
       <a class="btn-google" href="https://www.google.com/maps/place/Bar+Castells/@41.3841667,2.1697222,17z/data=!4m6!3m5!1s0x12a4a2f69c89fa91:0xb05593018a574837!8m2!3d41.3841667!4d2.1697222!16s%2Fg%2F1vlcyx0c" target="_blank" rel="noopener">
-        <span data-i18n="rev.btn">Veure a Google Maps</span>
+        <span data-i18n="rev.btn">Ver en Google Maps</span>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
       </a>
     </div>
@@ -831,16 +874,16 @@ img[data-ph]{
     <header class="section-head">
       <span class="numeral">04</span>
       <div class="lead">
-        <span class="eyebrow" data-i18n="tro.eyebrow">Trobar-nos</span>
-        <h2 data-i18n="tro.h2">A la cantonada de sempre.</h2>
-        <p data-i18n="tro.lead">Plaça del Bonsuccés, al Raval. Tres minuts caminant des de Plaça Catalunya.</p>
+        <span class="eyebrow" data-i18n="tro.eyebrow">Cómo llegar</span>
+        <h2 data-i18n="tro.h2">En la esquina de siempre.</h2>
+        <p data-i18n="tro.lead">Plaça del Bonsuccés, en el Raval. Tres minutos andando desde Plaza Catalunya.</p>
       </div>
     </header>
 
     <div class="trobar-grid">
       <dl class="info-card">
         <div class="info-row">
-          <dt data-i18n="tro.addr">Adreça</dt>
+          <dt data-i18n="tro.addr">Dirección</dt>
           <dd>
             <strong>Plaça del Bonsuccés, 1</strong><br/>
             08001 Barcelona<br/>
@@ -848,19 +891,19 @@ img[data-ph]{
           </dd>
         </div>
         <div class="info-row">
-          <dt data-i18n="tro.tel">Telèfon</dt>
+          <dt data-i18n="tro.tel">Teléfono</dt>
           <dd><a href="tel:+34933021054"><strong>93 302 10 54</strong></a></dd>
         </div>
         <div class="info-row">
-          <dt data-i18n="tro.hours">Horari</dt>
+          <dt data-i18n="tro.hours">Horario</dt>
           <dd>
-            <strong data-i18n="tro.h1">Dilluns a dijous</strong> · 8.00 — 01.00 h<br/>
-            <strong data-i18n="tro.h2t">Divendres i dissabte</strong> · 8.00 — 02.30 h<br/>
-            <strong data-i18n="tro.h3">Diumenge</strong> · <span data-i18n="tro.closed">tancat</span>
+            <strong data-i18n="tro.h1">Lunes a jueves</strong> · 8.00 — 01.00 h<br/>
+            <strong data-i18n="tro.h2t">Viernes y sábado</strong> · 8.00 — 02.30 h<br/>
+            <strong data-i18n="tro.h3">Domingo</strong> · <span data-i18n="tro.closed">cerrado</span>
           </dd>
         </div>
         <div class="info-row">
-          <dt data-i18n="tro.transit">Com arribar</dt>
+          <dt data-i18n="tro.transit">Cómo llegar</dt>
           <dd>
             <strong data-i18n="tro.metro">Metro</strong> L3 Pl. Catalunya<br/>
             <strong data-i18n="tro.bus">Bus</strong> 14 · 59 · 38 · 91
@@ -879,7 +922,7 @@ img[data-ph]{
         <a class="map-open"
            href="https://www.google.com/maps/place/Pla%C3%A7a+del+Bonsucc%C3%A9s+1,+Barcelona"
            target="_blank" rel="noopener">
-          <span data-i18n="tro.openMaps">Obrir a Google Maps</span>
+          <span data-i18n="tro.openMaps">Abrir en Google Maps</span>
           <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
         </a>
       </div>
@@ -893,24 +936,38 @@ img[data-ph]{
     <div class="foot-grid">
       <div class="left"><img src="images/logo.png" alt="Bar Castells" class="foot-logo"/><span class="foot-est">est. 1921</span></div>
       <div class="center">
-        <a href="tel:+34933021054" data-i18n="foot.call">Truca'ns</a>
+        <a href="tel:+34933021054" data-i18n="foot.call">Llámanos</a>
         <a href="#" onclick="if(window.klaro)klaro.show();return false;" data-i18n="foot.cookies">Cookies</a>
       </div>
-      <div class="right" data-i18n="foot.craft">Fet amb cura a Barcelona</div>
+      <div class="right" data-i18n="foot.craft">Hecho con cuidado en Barcelona</div>
     </div>
     <div class="foot-bottom">
       <span>© 2026 Bar Castells · Plaça del Bonsuccés, 1 · 08001 Barcelona</span>
-      <span data-i18n="foot.legal">Avís legal · Política de privacitat</span>
+      <span><a href="#" id="legalLink" data-i18n="foot.legal">Aviso legal · Política de privacidad</a></span>
     </div>
   </div>
 </footer>
+
+<!-- ============ LEGAL / PRIVACY MODAL ============ -->
+<div class="legal-overlay" id="legalOverlay" role="dialog" aria-modal="true" aria-labelledby="legalTitle" hidden>
+  <div class="legal-sheet">
+    <button class="legal-close" id="legalClose" aria-label="Cerrar">×</button>
+    <div class="legal-body">
+      <h2 id="legalTitle" data-i18n="legal.title">Aviso legal y privacidad</h2>
+      <h3 data-i18n="legal.h1">Aviso legal</h3>
+      <p data-i18n="legal.p1">Este sitio web es titularidad de Bar Castells, con domicilio en la Plaça del Bonsuccés, 1, 08001 Barcelona. Puedes contactar con nosotros por teléfono en el +34 933 021 054 o por correo electrónico en <a href="mailto:barcastells@barcastells.com">barcastells@barcastells.com</a>. El contenido de este sitio tiene una finalidad puramente informativa sobre el bar, su horario y su ubicación.</p>
+      <h3 data-i18n="legal.h2">Política de privacidad</h3>
+      <p data-i18n="legal.p2">No recogemos datos personales a través de este sitio web salvo que nos escribas voluntariamente. Usamos Google Analytics para medir visitas de forma anónima y Google Maps para mostrar nuestra ubicación, siempre con tu consentimiento previo, que puedes gestionar desde «Configurar cookies». Si nos escribes, usaremos tu dirección únicamente para responderte. Puedes ejercer tus derechos de acceso, rectificación y supresión en <a href="mailto:barcastells@barcastells.com">barcastells@barcastells.com</a>.</p>
+    </div>
+  </div>
+</div>
 
 <!-- ============ TWEAKS PANEL ============ -->
 <button class="tw-fab" id="twFab" aria-label="Tweaks">✦</button>
 <aside class="tw-panel" id="twPanel" role="dialog" aria-label="Tweaks">
   <header class="tw-head">
     <h4>Tweaks</h4>
-    <button id="twClose" aria-label="Tancar">×</button>
+    <button id="twClose" aria-label="Cerrar">×</button>
   </header>
   <div class="tw-body">
     <div class="tw-section">
@@ -1106,7 +1163,12 @@ const I18N = {
     "tro.addr":"Adreça","tro.addrNote":"El Raval · Ciutat Vella","tro.tel":"Telèfon","tro.hours":"Horari","tro.transit":"Com arribar",
     "tro.h1":"Dilluns a dijous","tro.h2t":"Divendres i dissabte","tro.h3":"Diumenge","tro.closed":"tancat",
     "tro.metro":"Metro","tro.bus":"Bus","tro.openMaps":"Obrir a Google Maps",
-    "foot.call":"Truca'ns","foot.cookies":"Configurar cookies","foot.craft":"Fet amb cura a Barcelona","foot.legal":"Avís legal · Política de privacitat"
+    "foot.call":"Truca'ns","foot.cookies":"Configurar cookies","foot.craft":"Fet amb cura a Barcelona","foot.legal":"Avís legal · Política de privacitat",
+    "legal.title":"Avís legal i privadesa",
+    "legal.h1":"Avís legal",
+    "legal.p1":"Aquest lloc web és titularitat de Bar Castells, amb domicili a la Plaça del Bonsuccés, 1, 08001 Barcelona. Pots contactar amb nosaltres per telèfon al +34 933 021 054 o per correu electrònic a <a href=\"mailto:barcastells@barcastells.com\">barcastells@barcastells.com</a>. El contingut d'aquest lloc té una finalitat purament informativa sobre el bar, el seu horari i la seva ubicació.",
+    "legal.h2":"Política de privadesa",
+    "legal.p2":"No recollim dades personals a través d'aquest lloc web tret que ens escriguis voluntàriament. Fem servir Google Analytics per mesurar visites de manera anònima i Google Maps per mostrar la nostra ubicació, sempre amb el teu consentiment previ, que pots gestionar des de «Configurar cookies». Si ens escrius, farem servir la teva adreça únicament per respondre't. Pots exercir els teus drets d'accés, rectificació i supressió a <a href=\"mailto:barcastells@barcastells.com\">barcastells@barcastells.com</a>."
   },
   es: {
     "nav.history":"Historia","nav.find":"Cómo llegar","nav.reviews":"Reseñas",
@@ -1138,7 +1200,12 @@ const I18N = {
     "tro.addr":"Dirección","tro.addrNote":"El Raval · Ciutat Vella","tro.tel":"Teléfono","tro.hours":"Horario","tro.transit":"Cómo llegar",
     "tro.h1":"Lunes a jueves","tro.h2t":"Viernes y sábado","tro.h3":"Domingo","tro.closed":"cerrado",
     "tro.metro":"Metro","tro.bus":"Bus","tro.openMaps":"Abrir en Google Maps",
-    "foot.call":"Llámanos","foot.cookies":"Configurar cookies","foot.craft":"Hecho con cuidado en Barcelona","foot.legal":"Aviso legal · Política de privacidad"
+    "foot.call":"Llámanos","foot.cookies":"Configurar cookies","foot.craft":"Hecho con cuidado en Barcelona","foot.legal":"Aviso legal · Política de privacidad",
+    "legal.title":"Aviso legal y privacidad",
+    "legal.h1":"Aviso legal",
+    "legal.p1":"Este sitio web es titularidad de Bar Castells, con domicilio en la Plaça del Bonsuccés, 1, 08001 Barcelona. Puedes contactar con nosotros por teléfono en el +34 933 021 054 o por correo electrónico en <a href=\"mailto:barcastells@barcastells.com\">barcastells@barcastells.com</a>. El contenido de este sitio tiene una finalidad puramente informativa sobre el bar, su horario y su ubicación.",
+    "legal.h2":"Política de privacidad",
+    "legal.p2":"No recogemos datos personales a través de este sitio web salvo que nos escribas voluntariamente. Usamos Google Analytics para medir visitas de forma anónima y Google Maps para mostrar nuestra ubicación, siempre con tu consentimiento previo, que puedes gestionar desde «Configurar cookies». Si nos escribes, usaremos tu dirección únicamente para responderte. Puedes ejercer tus derechos de acceso, rectificación y supresión en <a href=\"mailto:barcastells@barcastells.com\">barcastells@barcastells.com</a>."
   },
   en: {
     "nav.history":"Story","nav.find":"Find us","nav.reviews":"Reviews",
@@ -1170,7 +1237,12 @@ const I18N = {
     "tro.addr":"Address","tro.addrNote":"El Raval · Ciutat Vella","tro.tel":"Phone","tro.hours":"Hours","tro.transit":"Getting here",
     "tro.h1":"Mon — Thu","tro.h2t":"Fri & Sat","tro.h3":"Sunday","tro.closed":"closed",
     "tro.metro":"Metro","tro.bus":"Bus","tro.openMaps":"Open in Google Maps",
-    "foot.call":"Call us","foot.cookies":"Cookie settings","foot.craft":"Made with care in Barcelona","foot.legal":"Legal · Privacy"
+    "foot.call":"Call us","foot.cookies":"Cookie settings","foot.craft":"Made with care in Barcelona","foot.legal":"Legal · Privacy",
+    "legal.title":"Legal notice & privacy",
+    "legal.h1":"Legal notice",
+    "legal.p1":"This website is owned by Bar Castells, located at Plaça del Bonsuccés, 1, 08001 Barcelona. You can reach us by phone at +34 933 021 054 or by email at <a href=\"mailto:barcastells@barcastells.com\">barcastells@barcastells.com</a>. The content of this site is purely informational about the bar, its opening hours and its location.",
+    "legal.h2":"Privacy policy",
+    "legal.p2":"We do not collect personal data through this website unless you write to us voluntarily. We use Google Analytics to measure visits anonymously and Google Maps to show our location, always with your prior consent, which you can manage from «Cookie settings». If you write to us, we will use your address only to reply. You can exercise your rights of access, rectification and erasure at <a href=\"mailto:barcastells@barcastells.com\">barcastells@barcastells.com</a>."
   }
 };
 
@@ -1199,12 +1271,23 @@ const navLinks = document.getElementById("navLinks");
 menuBtn?.addEventListener("click",()=>navLinks.classList.toggle("open"));
 navLinks.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>navLinks.classList.remove("open")));
 
+/* legal / privacy modal */
+const legalOverlay = document.getElementById("legalOverlay");
+const legalLink = document.getElementById("legalLink");
+const legalClose = document.getElementById("legalClose");
+function openLegal(e){ if(e)e.preventDefault(); legalOverlay.hidden=false; }
+function closeLegal(){ legalOverlay.hidden=true; }
+legalLink?.addEventListener("click",openLegal);
+legalClose?.addEventListener("click",closeLegal);
+legalOverlay?.addEventListener("click",e=>{ if(e.target===legalOverlay) closeLegal(); });
+document.addEventListener("keydown",e=>{ if(e.key==="Escape" && legalOverlay && !legalOverlay.hidden) closeLegal(); });
+
 </script>
 
 <!-- ============ KLARO CONSENT CONFIG ============ -->
 <script>
 (function(){
-  var savedLang = "ca";
+  var savedLang = "es";
   try{ var s = localStorage.getItem("bc-lang"); if(s) savedLang = s; }catch(e){}
   window.klaroConfig = {
     version: 1,
@@ -1224,7 +1307,7 @@ navLinks.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>navLink
       ca: {
         consentModal: {
           title: "Privadesa al Bar Castells",
-          description: "Utilitzem serveis externs (Google Analytics i Google Maps) que poden establir galetes. Tria què vols activar."
+          description: "Utilitzem serveis externs (Google Analytics i Google Maps) que poden establir galetes. Tria què vols activar. Per a qualsevol qüestió sobre les teves dades, escriu-nos a <a href=\"mailto:barcastells@barcastells.com\">barcastells@barcastells.com</a>."
         },
         consentNotice: {
           title: "Galetes i serveis externs",
@@ -1253,7 +1336,7 @@ navLinks.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>navLink
       es: {
         consentModal: {
           title: "Privacidad en Bar Castells",
-          description: "Utilizamos servicios externos (Google Analytics y Google Maps) que pueden establecer cookies. Elige qué quieres activar."
+          description: "Utilizamos servicios externos (Google Analytics y Google Maps) que pueden establecer cookies. Elige qué quieres activar. Para cualquier cuestión sobre tus datos, escríbenos a <a href=\"mailto:barcastells@barcastells.com\">barcastells@barcastells.com</a>."
         },
         consentNotice: {
           title: "Cookies y servicios externos",
@@ -1282,7 +1365,7 @@ navLinks.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>navLink
       en: {
         consentModal: {
           title: "Privacy at Bar Castells",
-          description: "We use external services (Google Analytics and Google Maps) that may set cookies. Choose which ones to enable."
+          description: "We use external services (Google Analytics and Google Maps) that may set cookies. Choose which ones to enable. For any question about your data, write to us at <a href=\"mailto:barcastells@barcastells.com\">barcastells@barcastells.com</a>."
         },
         consentNotice: {
           title: "Cookies and external services",
